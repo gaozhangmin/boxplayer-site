@@ -26,12 +26,12 @@ export default function Hero() {
           </h1>
 
           <p className="sr-only">
-            BoxPlayer 是免费开源的跨平台视频播放器,iOS 播放器、Apple TV 播放器、Mac 播放器、Windows 播放器、Linux 播放器全平台可用。原生 Plex 客户端、Jellyfin 客户端、Emby 客户端,直连阿里云盘、百度网盘、OneDrive、Google Drive、115 网盘、PikPak、SMB、WebDAV、NFS、NAS。支持 4K HDR10、Dolby Vision 杜比视界、Dolby Atmos 杜比全景声、HDR10+、DTS-HD MA、TrueHD、ISO 原盘、BDMV、UHD 蓝光,是 Infuse、VidHub、Kodi、VLC、PotPlayer、nPlayer、MX Player 的免费替代方案。
+            BoxPlayer 是免费开源的跨平台视频播放器与媒体服务器客户端,iOS 播放器、Apple TV 播放器、Mac 播放器、Windows 播放器、Linux 播放器全平台可用。原生 Plex 客户端、Jellyfin 客户端、Emby 客户端,可以直连 Windows / Linux 上自建的 Plex、Jellyfin、Emby 媒体服务器,以及群晖、威联通、TrueNAS、unRAID NAS;支持自建 NFS 服务器、SMB、WebDAV、FTP 共享挂载,直连阿里云盘、百度网盘、OneDrive、Google Drive、115 网盘、PikPak。支持 4K HDR10、Dolby Vision 杜比视界、Dolby Atmos 杜比全景声、HDR10+、DTS-HD MA、TrueHD、ISO 原盘、BDMV、UHD 蓝光,是 Infuse、VidHub、Kodi、VLC、PotPlayer、nPlayer、MX Player 的免费开源替代方案,适合自建影音库、家庭媒体服务器、私人影院。
           </p>
 
           <p className="mt-6 max-w-2xl text-ink-500 text-lg leading-relaxed">
-            iOS 播放器、Apple TV 4K 播放器、macOS / Windows / Linux 桌面播放器 —
-            一份代码,所有屏幕。原生 Plex / Jellyfin / Emby 客户端,直连阿里云盘、OneDrive、115 网盘、SMB、WebDAV,支持 4K HDR、杜比视界、原盘 ISO 与 UHD 蓝光。
+            iOS 播放器、Apple TV 4K 播放器、macOS / Windows / Linux 桌面播放器 ——
+            一份代码,所有屏幕。原生 Plex / Jellyfin / Emby 客户端,直连 Windows / Linux 自建媒体服务器、自建 NFS、SMB、WebDAV,支持 4K HDR、杜比视界、原盘 ISO 与 UHD 蓝光。
           </p>
 
           <div className="mt-9 flex items-center gap-3">
@@ -62,7 +62,7 @@ export default function Hero() {
           <div className="relative card-soft overflow-hidden ring-soft">
             <Image
               src="/images/desktop/win-hero.png"
-              alt="BoxPlayer 跨平台 4K HDR 视频播放器主界面截图,展示媒体库与海报墙"
+              alt="BoxPlayer 跨平台 4K HDR 视频播放器与媒体服务器客户端主界面 — Plex / Jellyfin / Emby 海报墙、自建 NFS / SMB 文件源,支持 Windows、Linux、macOS、Apple TV、iOS"
               width={2400}
               height={1500}
               priority

@@ -4,13 +4,67 @@ import Link from "next/link";
 import { ArrowRight, Cloud, Sparkles, Layers, Zap, Repeat, Shield, Apple, Smartphone, Monitor, Tv } from "lucide-react";
 
 const SITE_URL = "https://xbysite.pages.dev";
-const TITLE_EN = "BoxPlayer — Cross-platform 4K HDR media player with cloud-direct streaming";
+const TITLE_EN = "BoxPlayer — Cross-platform 4K HDR media player & Plex / Jellyfin / Emby client for Windows, Linux, macOS, Apple TV and iOS";
 const DESCRIPTION_EN =
-  "BoxPlayer is a cross-platform 4K HDR video player. Stream from Aliyun Drive, OneDrive, Google Drive, Plex, Jellyfin, Emby, SMB and WebDAV — on iPhone, iPad, Apple TV, Mac, Windows and Android, with progress synced across every screen.";
+  "BoxPlayer is a free open-source cross-platform 4K HDR video player and media server client. Native Plex, Jellyfin and Emby client for Windows, Linux, macOS, Apple TV and iOS. Connect to self-hosted media servers, self-hosted NFS, SMB, WebDAV and FTP shares — including Synology, QNAP, TrueNAS and unRAID. Stream from Aliyun Drive, OneDrive, Google Drive, Dropbox and more, with progress synced across every screen.";
 
 export const metadata: Metadata = {
   title: TITLE_EN,
   description: DESCRIPTION_EN,
+  keywords: [
+    "BoxPlayer",
+    "free media player",
+    "open source video player",
+    "cross platform media player",
+    "4K HDR player",
+    "Dolby Vision player",
+    "HDR10 player",
+    "iOS video player",
+    "Apple TV media player",
+    "macOS video player",
+    "Windows video player",
+    "Linux video player",
+    "Plex client",
+    "Plex client for Windows",
+    "Plex client for Linux",
+    "Plex client for Apple TV",
+    "Jellyfin client",
+    "Jellyfin client for Windows",
+    "Jellyfin client for Linux",
+    "Jellyfin client for Apple TV",
+    "Jellyfin client for macOS",
+    "Emby client",
+    "Emby client for Windows",
+    "Emby client for Linux",
+    "Kodi alternative",
+    "Infuse alternative",
+    "VLC alternative",
+    "self hosted media server",
+    "home media server client",
+    "media server client",
+    "Windows media server",
+    "Linux media server",
+    "Docker Jellyfin",
+    "Docker Plex",
+    "Synology media server",
+    "QNAP media server",
+    "TrueNAS media server",
+    "unRAID media server",
+    "NFS video player",
+    "NFS media player",
+    "self hosted NFS",
+    "NFS share player",
+    "SMB video player",
+    "WebDAV video player",
+    "FTP video player",
+    "NAS video player",
+    "Aliyun Drive player",
+    "OneDrive player",
+    "Google Drive player",
+    "Dropbox player",
+    "ISO Blu-ray player",
+    "UHD Blu-ray player",
+  ],
   alternates: {
     canonical: "/en/",
     languages: {
@@ -53,18 +107,18 @@ const FEATURES = [
   },
   {
     icon: Zap,
-    title: "Plex · Jellyfin · Emby",
-    body: "Native protocol support for the major media servers — connect once, every device stays in sync.",
+    title: "Plex · Jellyfin · Emby client",
+    body: "Native client for the major media servers — connect once to your self-hosted Plex / Jellyfin / Emby on Windows, Linux, Docker, Synology, QNAP, TrueNAS or unRAID, every device stays in sync.",
   },
   {
     icon: Repeat,
     title: "Across every screen",
-    body: "iPhone, iPad, Apple TV, Mac, Windows, Android — one account, one timeline.",
+    body: "iPhone, iPad, Apple TV, Mac, Windows, Linux — one account, one timeline.",
   },
   {
     icon: Shield,
-    title: "Local-first privacy",
-    body: "Your library, your network, your devices. BoxPlayer doesn't host content, doesn't phone home.",
+    title: "NAS · self-hosted NFS · local-first",
+    body: "Mount Synology / QNAP / TrueNAS / unRAID NAS, plus self-hosted NFS, SMB, WebDAV and FTP shares — your library, your network, your devices. BoxPlayer doesn't host content and doesn't phone home.",
   },
 ];
 
@@ -129,7 +183,7 @@ export default function HomeEn() {
                 actually deserves.
               </h1>
               <p className="mt-6 max-w-2xl text-ink-500 text-lg leading-relaxed">
-                BoxPlayer is a cross-platform 4K HDR video player — stream from any cloud drive or media server, with progress synced across every screen.
+                BoxPlayer is a cross-platform 4K HDR video player and Plex / Jellyfin / Emby client for Windows, Linux, macOS, Apple TV and iOS — connect to self-hosted media servers and NFS / SMB / WebDAV shares, with progress synced across every screen.
               </p>
               <div className="mt-9 flex items-center gap-3">
                 <a href="#download" className="btn-primary">
@@ -149,7 +203,7 @@ export default function HomeEn() {
               <div className="relative card-soft overflow-hidden ring-soft">
                 <Image
                   src="/images/desktop/win-hero.png"
-                  alt="BoxPlayer cross-platform 4K HDR media player main interface, showing the media library and poster wall"
+                  alt="BoxPlayer cross-platform 4K HDR media player and Plex / Jellyfin / Emby client UI on Windows, Linux and macOS, with poster wall and self-hosted NFS / SMB sources"
                   width={2400}
                   height={1500}
                   priority

@@ -19,7 +19,7 @@ const FEATURES = [
   {
     icon: Zap,
     title: "Plex / Jellyfin / Emby 客户端",
-    body: "原生协议接入三大主流媒体服务器,iOS、Apple TV、Mac、Windows、Linux 全平台同一进度。Infuse、VidHub、Kodi、VLC 的免费替代方案。",
+    body: "原生协议接入三大主流媒体服务器 — 无论你的 Plex / Jellyfin / Emby 跑在 Windows、Linux、Docker、群晖、威联通、TrueNAS、unRAID,iOS、Apple TV、Mac、Windows、Linux 全平台同一进度。Infuse、VidHub、Kodi、VLC 的免费开源替代客户端。",
   },
   {
     icon: Repeat,
@@ -28,8 +28,8 @@ const FEATURES = [
   },
   {
     icon: Shield,
-    title: "Local-first privacy · 本地优先",
-    body: "你的资源、你的网络、你的 NAS / 群晖 / 威联通。BoxPlayer 不托管影片、不上传云端、不收集观影数据。",
+    title: "NAS · 自建 NFS · 本地优先",
+    body: "群晖、威联通、TrueNAS、unRAID 即插即用;Linux 自建 NFS、SMB、WebDAV、FTP 共享一键挂载,4K / 原盘原码率直出。你的资源、你的网络、你的私人影院 — BoxPlayer 不托管影片、不上传云端、不收集观影数据。",
   },
 ];
 
@@ -53,8 +53,9 @@ export default function Features() {
             <span className="italic text-skype-deep">A whole theatre.</span>
           </h2>
           <p className="mt-5 text-ink-500 text-lg leading-relaxed">
-            iOS 4K 播放器、Apple TV 杜比视界播放器、Mac 原盘播放器、Windows / Linux 媒体播放器
-            — 一份订阅就能拿到 Plex 客户端、Jellyfin 客户端、Emby 客户端的能力,
+            iOS 4K 播放器、Apple TV 杜比视界播放器、Mac 原盘播放器、Windows / Linux 媒体服务器客户端
+            —— 一份订阅就能拿到 Plex 客户端、Jellyfin 客户端、Emby 客户端的能力,
+            兼容 Windows / Linux / Docker / 群晖 / 威联通 / TrueNAS / unRAID 上自建的媒体服务器与 NFS 共享,
             是 Infuse、VidHub、Kodi、VLC、PotPlayer 的免费开源替代方案。
           </p>
           <p className="mt-5 text-ink-500 text-lg leading-relaxed">

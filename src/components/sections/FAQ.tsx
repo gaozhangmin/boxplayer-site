@@ -18,7 +18,15 @@ const FAQS = [
   },
   {
     q: "BoxPlayer 支持哪些云盘和网络协议?群晖 / QNAP NAS 能用吗?",
-    a: "国内云盘:阿里云盘、百度网盘、115 网盘、PikPak;海外云盘:OneDrive、Google Drive、Dropbox、Box;媒体服务器:Plex、Jellyfin、Emby、Kodi;NAS 协议:SMB、WebDAV、NFS、FTP。群晖 Synology、威联通 QNAP、TrueNAS、unRAID 都可以无缝接入。",
+    a: "国内云盘:阿里云盘、百度网盘、115 网盘、PikPak;海外云盘:OneDrive、Google Drive、Dropbox、Box;媒体服务器:Plex、Jellyfin、Emby、Kodi;NAS 协议:SMB、WebDAV、NFS、FTP。群晖 Synology、威联通 QNAP、TrueNAS、unRAID 都可以无缝接入,自建 NFS 共享也能直接挂载播放。",
+  },
+  {
+    q: "BoxPlayer 可以连接 Windows / Linux 自建的 Plex / Jellyfin / Emby 媒体服务器吗?",
+    a: "可以。无论你的 Plex、Jellyfin 还是 Emby 服务器跑在 Windows 10/11、Ubuntu、Debian、Fedora、Arch、Docker 容器,还是群晖、威联通、TrueNAS、unRAID 上,BoxPlayer 都能通过原生协议直接登录,拉取媒体库、海报墙、季度分组与观看进度。是 Windows 媒体服务器、Linux 媒体服务器场景下 Infuse、VidHub、Kodi 的免费开源替代客户端。",
+  },
+  {
+    q: "BoxPlayer 支持自建 NFS 服务器吗?如何挂载 NFS 共享视频?",
+    a: "支持。BoxPlayer 内置 NFS 客户端,可直接连接 Linux(Ubuntu / Debian / CentOS / Arch)上自建的 NFS 共享,以及群晖、威联通、TrueNAS、unRAID 暴露的 NFS 挂载点。在文件源里填入 NFS 服务器地址、导出路径与挂载选项即可,4K / HDR / 原盘文件原码率直出,适合家庭影院与自建影音库场景。",
   },
   {
     q: "BoxPlayer 支持 4K HDR、杜比视界、Dolby Atmos 和 ISO 原盘吗?",

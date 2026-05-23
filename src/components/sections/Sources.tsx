@@ -6,11 +6,13 @@ const SOURCES = [
   { src: "/images/icons/icon_googledrive.svg", name: "Google Drive", alt: "Google Drive logo" },
   { src: "/images/icons/icon_onedrive.svg", name: "OneDrive", alt: "Microsoft OneDrive logo" },
   { src: "/images/icons/icon_dropbox.svg", name: "Dropbox", alt: "Dropbox logo" },
-  { src: "/images/icons/icon_emby.svg", name: "Emby", alt: "Emby 媒体服务器 logo" },
-  { src: "/images/icons/jellyfin-icon-transparent.svg", name: "Jellyfin", alt: "Jellyfin 媒体服务器 logo" },
   { src: "/images/icons/plex.svg", name: "Plex", alt: "Plex 媒体服务器 logo" },
+  { src: "/images/icons/jellyfin-icon-transparent.svg", name: "Jellyfin", alt: "Jellyfin 媒体服务器 logo" },
+  { src: "/images/icons/icon_emby.svg", name: "Emby", alt: "Emby 媒体服务器 logo" },
   { src: "/images/icons/icon_smb.svg", name: "SMB", alt: "SMB 网络共享协议 logo" },
   { src: "/images/icons/icon_dav.svg", name: "WebDAV", alt: "WebDAV 协议 logo" },
+  { src: "/images/icons/icon_nfs.svg", name: "NFS", alt: "NFS 网络文件系统 logo" },
+  { src: "/images/icons/icon_ftp.svg", name: "FTP", alt: "FTP / SFTP 协议 logo" },
 ];
 
 export default function Sources() {
@@ -33,14 +35,16 @@ export default function Sources() {
             <span className="italic text-skype-deep">All of them.</span>
           </h2>
           <p className="mt-5 text-ink-500 text-lg leading-relaxed">
-            国内云盘(阿里云盘、百度网盘、115 网盘、PikPak)、海外云盘(OneDrive、Google Drive、Dropbox、Box)、媒体服务器(Plex、Jellyfin、Emby、Kodi)、NAS 协议(SMB、WebDAV、NFS、FTP) —
-            一台 BoxPlayer 全打通,群晖、威联通、TrueNAS、unRAID 即插即用。
+            媒体服务器(Plex、Jellyfin、Emby、Kodi —— 跑在 Windows / Linux / Docker / 群晖 / 威联通 / TrueNAS / unRAID 上都行)、
+            NAS 与网络协议(SMB、WebDAV、NFS、FTP,自建 NFS 共享一键挂载)、
+            国内云盘(阿里云盘、百度网盘、115 网盘、PikPak)、海外云盘(OneDrive、Google Drive、Dropbox、Box)
+            —— 一台 BoxPlayer,全部打通。
           </p>
         </div>
 
         <ul
-          className="mt-14 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 list-none"
-          aria-label="支持的视频源与媒体服务器"
+          className="mt-14 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 list-none"
+          aria-label="支持的视频源、媒体服务器与 NAS 协议"
         >
           {SOURCES.map((s) => (
             <li

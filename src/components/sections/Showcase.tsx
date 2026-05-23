@@ -16,14 +16,14 @@ const SHOTS = [
   {
     src: "/images/desktop/win-media-server.png",
     title: "Media server",
-    desc: "Plex / Jellyfin / Emby 原生接入",
-    alt: "BoxPlayer 媒体服务器界面 — Plex、Jellyfin、Emby 原生协议接入",
+    desc: "Plex / Jellyfin / Emby · Windows / Linux 自建均可",
+    alt: "BoxPlayer 媒体服务器界面 — 原生连接 Windows / Linux / Docker / NAS 上自建的 Plex、Jellyfin、Emby 媒体服务器",
   },
   {
     src: "/images/desktop/win-file-manager.png",
     title: "File manager",
-    desc: "云盘 · WebDAV · SMB 一站直连",
-    alt: "BoxPlayer 文件管理器 — 阿里云盘、OneDrive、WebDAV、SMB 一站直连",
+    desc: "云盘 · WebDAV · SMB · 自建 NFS 一站直连",
+    alt: "BoxPlayer 文件管理器 — 阿里云盘、OneDrive、WebDAV、SMB、NFS、FTP、群晖 / TrueNAS 自建挂载",
   },
 ];
 
