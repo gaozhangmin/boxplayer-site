@@ -1,0 +1,27 @@
+/opengraph-image
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+
+/twitter-image
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+
+/icon.svg
+  Content-Type: image/svg+xml
+  Cache-Control: public, max-age=31536000, immutable
+
+/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: public, max-age=3600
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

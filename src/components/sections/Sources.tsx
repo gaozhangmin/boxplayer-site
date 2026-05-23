@@ -1,0 +1,66 @@
+import Image from "next/image";
+
+const SOURCES = [
+  { src: "/images/icons/icon_aliyun.svg", name: "阿里云盘", alt: "阿里云盘 logo" },
+  { src: "/images/icons/icon_baidu.svg", name: "百度网盘", alt: "百度网盘 logo" },
+  { src: "/images/icons/icon_googledrive.svg", name: "Google Drive", alt: "Google Drive logo" },
+  { src: "/images/icons/icon_onedrive.svg", name: "OneDrive", alt: "Microsoft OneDrive logo" },
+  { src: "/images/icons/icon_dropbox.svg", name: "Dropbox", alt: "Dropbox logo" },
+  { src: "/images/icons/icon_emby.svg", name: "Emby", alt: "Emby 媒体服务器 logo" },
+  { src: "/images/icons/jellyfin-icon-transparent.svg", name: "Jellyfin", alt: "Jellyfin 媒体服务器 logo" },
+  { src: "/images/icons/plex.svg", name: "Plex", alt: "Plex 媒体服务器 logo" },
+  { src: "/images/icons/icon_smb.svg", name: "SMB", alt: "SMB 网络共享协议 logo" },
+  { src: "/images/icons/icon_dav.svg", name: "WebDAV", alt: "WebDAV 协议 logo" },
+];
+
+export default function Sources() {
+  return (
+    <section
+      id="sources"
+      aria-labelledby="sources-heading"
+      className="relative py-24 md:py-32"
+    >
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="text-center max-w-3xl mx-auto">
+          <span className="text-skype-deep font-semibold text-sm tracking-[0.18em] uppercase">
+            Plays everything from anywhere
+          </span>
+          <h2
+            id="sources-heading"
+            className="font-display mt-4 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] tracking-[-0.02em] text-ink-900 display-balance"
+          >
+            Your sources.{" "}
+            <span className="italic text-skype-deep">All of them.</span>
+          </h2>
+          <p className="mt-5 text-ink-500 text-lg leading-relaxed">
+            云盘、媒体服务器、网络协议、本地硬盘 — 接入一次,设备之间无缝流转。
+          </p>
+        </div>
+
+        <ul
+          className="mt-14 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 list-none"
+          aria-label="支持的视频源与媒体服务器"
+        >
+          {SOURCES.map((s) => (
+            <li
+              key={s.name}
+              className="card-soft px-5 py-6 flex flex-col items-center gap-3 hover:-translate-y-0.5 transition"
+            >
+              <div className="w-12 h-12 grid place-items-center">
+                <Image
+                  src={s.src}
+                  alt={s.alt}
+                  width={48}
+                  height={48}
+                  loading="lazy"
+                  className="w-12 h-12 object-contain"
+                />
+              </div>
+              <span className="text-sm font-medium text-ink-700">{s.name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
