@@ -6,6 +6,7 @@ import Sources from "@/components/sections/Sources";
 import OpenSource from "@/components/sections/OpenSource";
 import DeveloperCLI from "@/components/sections/DeveloperCLI";
 import Download from "@/components/sections/Download";
+import FAQ from "@/components/sections/FAQ";
 import SiteFooter from "@/components/sections/SiteFooter";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <OpenSource />
         <DeveloperCLI />
         <Download />
+        <FAQ />
       </main>
       <SiteFooter />
     </>

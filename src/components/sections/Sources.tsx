@@ -33,7 +33,8 @@ export default function Sources() {
             <span className="italic text-skype-deep">All of them.</span>
           </h2>
           <p className="mt-5 text-ink-500 text-lg leading-relaxed">
-            云盘、媒体服务器、网络协议、本地硬盘 — 接入一次,设备之间无缝流转。
+            国内云盘(阿里云盘、百度网盘、115 网盘、PikPak)、海外云盘(OneDrive、Google Drive、Dropbox、Box)、媒体服务器(Plex、Jellyfin、Emby、Kodi)、NAS 协议(SMB、WebDAV、NFS、FTP) —
+            一台 BoxPlayer 全打通,群晖、威联通、TrueNAS、unRAID 即插即用。
           </p>
         </div>
 

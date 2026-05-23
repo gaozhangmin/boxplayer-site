@@ -26,13 +26,12 @@ export default function Hero() {
           </h1>
 
           <p className="sr-only">
-            BoxPlayer 是跨平台 4K HDR 视频播放器,支持 iOS、iPadOS、Apple TV、macOS、Windows 与 Android,直连阿里云盘、百度网盘、OneDrive、Google Drive、Plex、Jellyfin、Emby、SMB、WebDAV。
+            BoxPlayer 是免费开源的跨平台视频播放器,iOS 播放器、Apple TV 播放器、Mac 播放器、Windows 播放器、Linux 播放器全平台可用。原生 Plex 客户端、Jellyfin 客户端、Emby 客户端,直连阿里云盘、百度网盘、OneDrive、Google Drive、115 网盘、PikPak、SMB、WebDAV、NFS、NAS。支持 4K HDR10、Dolby Vision 杜比视界、Dolby Atmos 杜比全景声、HDR10+、DTS-HD MA、TrueHD、ISO 原盘、BDMV、UHD 蓝光,是 Infuse、VidHub、Kodi、VLC、PotPlayer、nPlayer、MX Player 的免费替代方案。
           </p>
 
           <p className="mt-6 max-w-2xl text-ink-500 text-lg leading-relaxed">
-            BoxPlayer 是跨平台视频播放器 — 4K HDR · 杜比视界 · 原盘直播。
-            把你的阿里云盘、OneDrive、Plex、Jellyfin 一键变成
-            iPhone、Apple TV、Mac 上的私人影院。
+            iOS 播放器、Apple TV 4K 播放器、macOS / Windows / Linux 桌面播放器 —
+            一份代码,所有屏幕。原生 Plex / Jellyfin / Emby 客户端,直连阿里云盘、OneDrive、115 网盘、SMB、WebDAV,支持 4K HDR、杜比视界、原盘 ISO 与 UHD 蓝光。
           </p>
 
           <div className="mt-9 flex items-center gap-3">

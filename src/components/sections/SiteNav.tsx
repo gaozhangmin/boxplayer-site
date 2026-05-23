@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const NAV = [
   { href: "#features", label: "Features" },
-  { href: "#showcase", label: "Showcase" },
   { href: "#opensource", label: "Open source" },
   { href: "#cli", label: "CLI · Agent" },
+  { href: "#faq", label: "FAQ" },
   { href: "#download", label: "Download" },
 ];
 
