@@ -30,7 +30,7 @@ export default function OpenSource() {
       className="relative py-24 md:py-32 bg-sky-50/40 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-start">
           {/* Left: pitch */}
           <div>
             <span className="eyebrow">
@@ -100,6 +100,51 @@ export default function OpenSource() {
                 <dd className="mt-1 font-semibold text-ink-900">$0 forever</dd>
               </div>
             </dl>
+
+            {/* Star history — community proof, sits right under the stats */}
+            <div className="mt-10 card-soft p-5 max-w-md">
+              <div className="flex items-center justify-between gap-3 mb-3">
+                <div className="flex items-center gap-2">
+                  <div
+                    className="w-9 h-9 shrink-0 rounded-xl bg-sky-50 ring-1 ring-sky-100 grid place-items-center text-skype-deep"
+                    aria-hidden
+                  >
+                    <Star className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-semibold text-ink-900 text-[15px]">
+                    Star history
+                  </h3>
+                </div>
+                <a
+                  href="https://www.star-history.com/#gaozhangmin/gaozhangmin&gaozhangmin/boxplayer&Date"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-xs text-skype-deep hover:underline"
+                >
+                  View →
+                </a>
+              </div>
+              <a
+                href="https://www.star-history.com/#gaozhangmin/gaozhangmin&gaozhangmin/boxplayer&Date"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open full Star history chart"
+                className="block"
+              >
+                <picture>
+                  <source
+                    media="(prefers-color-scheme: dark)"
+                    srcSet="https://api.star-history.com/svg?repos=gaozhangmin/gaozhangmin,gaozhangmin/boxplayer&type=Date&theme=dark"
+                  />
+                  <img
+                    src="https://api.star-history.com/svg?repos=gaozhangmin/gaozhangmin,gaozhangmin/boxplayer&type=Date"
+                    alt="Star History Chart for gaozhangmin/gaozhangmin and gaozhangmin/boxplayer"
+                    loading="lazy"
+                    className="block w-full h-auto max-h-56 object-contain rounded-lg"
+                  />
+                </picture>
+              </a>
+            </div>
           </div>
 
           {/* Right: feature cards */}
