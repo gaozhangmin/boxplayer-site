@@ -104,7 +104,7 @@ export default function DeveloperCLI() {
         {/* Install panels */}
         <div className="mt-12 sm:mt-16 grid lg:grid-cols-2 gap-5 sm:gap-6">
           {/* CLI install */}
-          <div className="card-soft p-0 overflow-hidden ring-soft">
+          <div className="card-soft p-0 overflow-hidden ring-soft min-w-0">
             <header className="flex items-center gap-3 px-5 sm:px-7 pt-5 sm:pt-7">
               <div
                 className="w-10 h-10 rounded-xl bg-sky-50 ring-1 ring-sky-100 grid place-items-center text-skype-deep shrink-0"
@@ -131,7 +131,7 @@ clouddrive-cli auth list --json`}</code>
           </div>
 
           {/* Skill install */}
-          <div className="card-soft p-0 overflow-hidden ring-soft">
+          <div className="card-soft p-0 overflow-hidden ring-soft min-w-0">
             <header className="flex items-center gap-3 px-5 sm:px-7 pt-5 sm:pt-7">
               <div
                 className="w-10 h-10 rounded-xl bg-sky-50 ring-1 ring-sky-100 grid place-items-center text-skype-deep shrink-0"
@@ -174,7 +174,7 @@ cp $(npm root -g)/clouddrive-cli/skill/SKILL.md \\
             {AGENT_EXAMPLES.map((ex) => (
               <li
                 key={ex.prompt}
-                className="card-soft p-0 overflow-hidden flex flex-col"
+                className="card-soft p-0 overflow-hidden flex flex-col min-w-0"
               >
                 {/* User bubble */}
                 <div className="px-5 sm:px-6 pt-5 sm:pt-6 pb-4 border-b border-ink-100">

@@ -32,7 +32,7 @@ export default function OpenSource() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 sm:gap-12 lg:gap-20 items-start">
           {/* Left: pitch */}
-          <div>
+          <div className="min-w-0">
             <span className="eyebrow">
               <span
                 className="w-1.5 h-1.5 rounded-full bg-leaf"
@@ -149,7 +149,7 @@ export default function OpenSource() {
           </div>
 
           {/* Right: feature cards */}
-          <ul className="space-y-4 list-none" aria-label="开源亮点">
+          <ul className="space-y-4 list-none min-w-0" aria-label="开源亮点">
             {HIGHLIGHTS.map((h) => (
               <li
                 key={h.title}
