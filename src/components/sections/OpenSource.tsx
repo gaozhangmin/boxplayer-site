@@ -27,10 +27,10 @@ export default function OpenSource() {
     <section
       id="opensource"
       aria-labelledby="opensource-heading"
-      className="relative py-24 md:py-32 bg-sky-50/40 overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 bg-sky-50/40 overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-start">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 sm:gap-12 lg:gap-20 items-start">
           {/* Left: pitch */}
           <div>
             <span className="eyebrow">
@@ -38,24 +38,25 @@ export default function OpenSource() {
                 className="w-1.5 h-1.5 rounded-full bg-leaf"
                 aria-hidden
               />
-              The only free & open-source one
+              <span className="hidden sm:inline">The only free &amp; open-source one</span>
+              <span className="sm:hidden">Free &amp; open-source</span>
             </span>
             <h2
               id="opensource-heading"
-              className="font-display mt-7 text-[clamp(2rem,4.8vw,3.5rem)] leading-[1.05] tracking-[-0.02em] text-ink-900 display-balance"
+              className="font-display mt-6 sm:mt-7 text-[clamp(1.875rem,6vw,3.5rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
             >
               全网唯一{" "}
               <span className="italic text-skype-deep">免费开源</span>
               <br className="hidden md:block" />
               的跨端视频播放器。
             </h2>
-            <p className="mt-6 text-ink-500 text-lg leading-relaxed max-w-xl">
+            <p className="mt-5 sm:mt-6 text-ink-500 text-base sm:text-lg leading-relaxed max-w-xl">
               市面上跨平台播放器要么收钱、要么闭源、要么砍 Linux。
               BoxPlayer 在 Windows 与 Linux 桌面端是 <strong className="text-ink-900">完全免费 + 代码开源</strong>
               的 — 一份代码,所有人都能编译、审计、修改、分发。
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-7 sm:mt-8 flex flex-wrap gap-3">
               <a
                 href={GITHUB_REPO}
                 target="_blank"
@@ -77,32 +78,32 @@ export default function OpenSource() {
               </a>
             </div>
 
-            <dl className="mt-10 grid grid-cols-3 max-w-md gap-x-6 gap-y-2">
+            <dl className="mt-8 sm:mt-10 grid grid-cols-3 max-w-md gap-x-4 sm:gap-x-6 gap-y-2">
               <div>
-                <dt className="text-xs uppercase tracking-wider text-ink-300">
+                <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-ink-300">
                   License
                 </dt>
-                <dd className="mt-1 font-semibold text-ink-900 flex items-center gap-1.5">
+                <dd className="mt-1 font-semibold text-ink-900 flex items-center gap-1.5 text-sm sm:text-base">
                   <Scale className="w-4 h-4 text-skype-deep" aria-hidden />
                   MIT
                 </dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-wider text-ink-300">
+                <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-ink-300">
                   Platforms
                 </dt>
-                <dd className="mt-1 font-semibold text-ink-900">Win · Linux</dd>
+                <dd className="mt-1 font-semibold text-ink-900 text-sm sm:text-base">Win · Linux</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-wider text-ink-300">
+                <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-ink-300">
                   Cost
                 </dt>
-                <dd className="mt-1 font-semibold text-ink-900">$0 forever</dd>
+                <dd className="mt-1 font-semibold text-ink-900 text-sm sm:text-base">$0 forever</dd>
               </div>
             </dl>
 
             {/* Star history — community proof, sits right under the stats */}
-            <div className="mt-10 card-soft p-5 max-w-md">
+            <div className="mt-8 sm:mt-10 card-soft p-4 sm:p-5 max-w-md">
               <div className="flex items-center justify-between gap-3 mb-3">
                 <div className="flex items-center gap-2">
                   <div
@@ -152,7 +153,7 @@ export default function OpenSource() {
             {HIGHLIGHTS.map((h) => (
               <li
                 key={h.title}
-                className="card-soft p-7 hover:-translate-y-0.5 transition"
+                className="card-soft p-5 sm:p-7 hover:-translate-y-0.5 transition"
               >
                 <div className="flex items-start gap-4">
                   <div
@@ -162,10 +163,10 @@ export default function OpenSource() {
                     <h.icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-ink-900 text-lg">
+                    <h3 className="font-semibold text-ink-900 text-base sm:text-lg">
                       {h.title}
                     </h3>
-                    <p className="mt-1.5 text-ink-500 leading-relaxed text-[15px]">
+                    <p className="mt-1.5 text-ink-500 leading-relaxed text-sm sm:text-[15px]">
                       {h.body}
                     </p>
                   </div>
@@ -183,7 +184,7 @@ export default function OpenSource() {
                   build.sh
                 </span>
               </div>
-              <pre className="bg-ink-900 text-sm leading-6 px-5 py-4 font-mono text-sky-200 overflow-x-auto m-0">
+              <pre className="bg-ink-900 text-xs sm:text-sm leading-6 px-4 sm:px-5 py-4 font-mono text-sky-200 overflow-x-auto m-0">
                 <code>{`# Linux / Windows
 git clone https://github.com/gaozhangmin/boxplayer.git
 cd boxplayer

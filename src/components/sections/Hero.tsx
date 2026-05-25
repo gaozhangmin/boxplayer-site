@@ -8,16 +8,17 @@ export default function Hero() {
       aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0 ambient-glow pointer-events-none" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-16 md:pt-28 md:pb-24">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 pt-12 pb-12 sm:pt-20 sm:pb-16 md:pt-28 md:pb-24">
         <div className="flex flex-col items-center text-center">
           <span className="eyebrow">
             <span className="w-1.5 h-1.5 rounded-full bg-leaf" aria-hidden />
-            Cross-platform · 4K HDR · Cloud native
+            <span className="hidden sm:inline">Cross-platform · 4K HDR · Cloud native</span>
+            <span className="sm:hidden">4K HDR · Cloud native</span>
           </span>
 
           <h1
             id="hero-heading"
-            className="font-display mt-7 text-[clamp(2.5rem,6vw,4.25rem)] leading-[1.08] tracking-[-0.02em] text-ink-900 display-balance max-w-4xl"
+            className="font-display mt-6 sm:mt-7 text-[clamp(2rem,8vw,4.25rem)] leading-[1.08] tracking-[-0.02em] text-ink-900 display-balance max-w-4xl"
           >
             A media player your{" "}
             <span className="italic text-skype-deep">library</span>
@@ -29,15 +30,15 @@ export default function Hero() {
             BoxPlayer 是免费开源的跨平台视频播放器与媒体服务器客户端,iOS 播放器、Apple TV 播放器、Mac 播放器、Windows 播放器、Linux 播放器全平台可用。原生 Plex 客户端、Jellyfin 客户端、Emby 客户端,可以直连 Windows / Linux 上自建的 Plex、Jellyfin、Emby 媒体服务器,以及群晖、威联通、TrueNAS、unRAID NAS;支持自建 NFS 服务器、SMB、WebDAV、FTP 共享挂载,直连阿里云盘、百度网盘、OneDrive、Google Drive、115 网盘、PikPak。支持 4K HDR10、Dolby Vision 杜比视界、Dolby Atmos 杜比全景声、HDR10+、DTS-HD MA、TrueHD、ISO 原盘、BDMV、UHD 蓝光,是 Infuse、VidHub、Kodi、VLC、PotPlayer、nPlayer、MX Player 的免费开源替代方案,适合自建影音库、家庭媒体服务器、私人影院。
           </p>
 
-          <p className="mt-6 max-w-2xl text-ink-500 text-lg leading-relaxed">
+          <p className="mt-5 sm:mt-6 max-w-2xl text-ink-500 text-base sm:text-lg leading-relaxed">
             iOS 播放器、Apple TV 4K 播放器、macOS / Windows / Linux 桌面播放器 ——
             一份代码,所有屏幕。原生 Plex / Jellyfin / Emby 客户端,直连 Windows / Linux 自建媒体服务器、自建 NFS、SMB、WebDAV,支持 4K HDR、杜比视界、原盘 ISO 与 UHD 蓝光。
           </p>
 
-          <div className="mt-9 flex items-center gap-3">
+          <div className="mt-8 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto max-w-xs sm:max-w-none">
             <a
               href="#download"
-              className="btn-primary"
+              className="btn-primary justify-center"
               aria-label="Download for free — BoxPlayer 免费下载"
             >
               Download for free
@@ -45,19 +46,19 @@ export default function Hero() {
             </a>
             <a
               href="#features"
-              className="btn-ghost"
+              className="btn-ghost justify-center"
               aria-label="See how it works — 查看功能"
             >
               See how it works
             </a>
           </div>
 
-          <p className="mt-5 text-sm italic text-ink-500">
+          <p className="mt-5 text-xs sm:text-sm italic text-ink-500 px-2">
             Free during preview · iOS · Android · Apple TV · macOS · Windows
           </p>
         </div>
 
-        <div className="relative mt-16 md:mt-20">
+        <div className="relative mt-12 sm:mt-16 md:mt-20">
           <div className="absolute -inset-x-10 -top-10 -bottom-10 bg-gradient-to-b from-sky-100/40 via-transparent to-transparent rounded-[40px] blur-2xl pointer-events-none" />
           <div className="relative card-soft overflow-hidden ring-soft">
             <Image

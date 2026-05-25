@@ -20,21 +20,21 @@ export default function Sources() {
     <section
       id="sources"
       aria-labelledby="sources-heading"
-      className="relative py-24 md:py-32"
+      className="relative py-16 sm:py-24 md:py-32"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-skype-deep font-semibold text-sm tracking-[0.18em] uppercase">
+          <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">
             Plays everything from anywhere
           </span>
           <h2
             id="sources-heading"
-            className="font-display mt-4 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] tracking-[-0.02em] text-ink-900 display-balance"
+            className="font-display mt-3 sm:mt-4 text-[clamp(1.75rem,6vw,3.25rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
           >
             Your sources.{" "}
             <span className="italic text-skype-deep">All of them.</span>
           </h2>
-          <p className="mt-5 text-ink-500 text-lg leading-relaxed">
+          <p className="mt-4 sm:mt-5 text-ink-500 text-base sm:text-lg leading-relaxed">
             媒体服务器(Plex、Jellyfin、Emby、Kodi —— 跑在 Windows / Linux / Docker / 群晖 / 威联通 / TrueNAS / unRAID 上都行)、
             NAS 与网络协议(SMB、WebDAV、NFS、FTP,自建 NFS 共享一键挂载)、
             国内云盘(阿里云盘、百度网盘、115 网盘、PikPak)、海外云盘(OneDrive、Google Drive、Dropbox、Box)
@@ -43,25 +43,25 @@ export default function Sources() {
         </div>
 
         <ul
-          className="mt-14 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 list-none"
+          className="mt-10 sm:mt-14 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 list-none"
           aria-label="支持的视频源、媒体服务器与 NAS 协议"
         >
           {SOURCES.map((s) => (
             <li
               key={s.name}
-              className="card-soft px-5 py-6 flex flex-col items-center gap-3 hover:-translate-y-0.5 transition"
+              className="card-soft px-3 py-4 sm:px-5 sm:py-6 flex flex-col items-center gap-2 sm:gap-3 hover:-translate-y-0.5 transition"
             >
-              <div className="w-12 h-12 grid place-items-center">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 grid place-items-center">
                 <Image
                   src={s.src}
                   alt={s.alt}
                   width={48}
                   height={48}
                   loading="lazy"
-                  className="w-12 h-12 object-contain"
+                  className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
                 />
               </div>
-              <span className="text-sm font-medium text-ink-700">{s.name}</span>
+              <span className="text-xs sm:text-sm font-medium text-ink-700 text-center">{s.name}</span>
             </li>
           ))}
         </ul>

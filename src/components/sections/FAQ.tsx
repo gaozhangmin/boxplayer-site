@@ -52,25 +52,25 @@ export default function FAQ() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="relative py-24 md:py-32 bg-sky-50/40"
+      className="relative py-16 sm:py-24 md:py-32 bg-sky-50/40"
     >
-      <div className="mx-auto max-w-4xl px-6 lg:px-10">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-10">
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-skype-deep font-semibold text-sm tracking-[0.18em] uppercase">
+          <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">
             FAQ
           </span>
           <h2
             id="faq-heading"
-            className="font-display mt-4 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] tracking-[-0.02em] text-ink-900 display-balance"
+            className="font-display mt-3 sm:mt-4 text-[clamp(1.75rem,6vw,3.25rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
           >
             Questions, <span className="italic text-skype-deep">answered.</span>
           </h2>
-          <p className="mt-5 text-ink-500 text-lg leading-relaxed">
+          <p className="mt-4 sm:mt-5 text-ink-500 text-base sm:text-lg leading-relaxed">
             关于 BoxPlayer 视频播放器、Plex / Jellyfin / Emby 客户端、云盘直链、4K HDR、AI Agent 整理网盘的常见问题。
           </p>
         </div>
 
-        <ul className="mt-12 space-y-3 list-none">
+        <ul className="mt-10 sm:mt-12 space-y-3 list-none">
           {FAQS.map((f, i) => {
             const expanded = open === i;
             return (
@@ -80,9 +80,9 @@ export default function FAQ() {
                   aria-expanded={expanded}
                   aria-controls={`faq-${i}`}
                   onClick={() => setOpen(expanded ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-sky-50/40 transition"
+                  className="w-full flex items-center justify-between gap-3 sm:gap-4 px-5 sm:px-6 py-4 sm:py-5 text-left hover:bg-sky-50/40 transition"
                 >
-                  <span className="font-semibold text-ink-900 text-[15.5px]">
+                  <span className="font-semibold text-ink-900 text-sm sm:text-[15.5px]">
                     {f.q}
                   </span>
                   <ChevronDown
@@ -95,7 +95,7 @@ export default function FAQ() {
                 {expanded && (
                   <div
                     id={`faq-${i}`}
-                    className="px-6 pb-5 text-ink-500 leading-relaxed text-[15px]"
+                    className="px-5 sm:px-6 pb-5 text-ink-500 leading-relaxed text-sm sm:text-[15px]"
                   >
                     {f.a}
                   </div>

@@ -61,27 +61,27 @@ export default function Download() {
     <section
       id="download"
       aria-labelledby="download-heading"
-      className="relative py-24 md:py-32 ambient-glow overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 ambient-glow overflow-hidden"
     >
-      <div className="mx-auto max-w-6xl px-6 lg:px-10">
-        <div className="card-soft ring-soft px-8 py-14 md:px-16 md:py-20 text-center">
-          <span className="text-skype-deep font-semibold text-sm tracking-[0.18em] uppercase">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
+        <div className="card-soft ring-soft px-5 py-10 sm:px-8 sm:py-14 md:px-16 md:py-20 text-center">
+          <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">
             Free during preview
           </span>
           <h2
             id="download-heading"
-            className="font-display mt-4 text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.05] tracking-[-0.02em] text-ink-900 display-balance"
+            className="font-display mt-3 sm:mt-4 text-[clamp(1.875rem,7vw,3.75rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
           >
             Get BoxPlayer on{" "}
             <span className="italic text-skype-deep">every screen.</span>
           </h2>
-          <p className="mt-5 max-w-xl mx-auto text-ink-500 text-lg leading-relaxed">
+          <p className="mt-4 sm:mt-5 max-w-xl mx-auto text-ink-500 text-base sm:text-lg leading-relaxed">
             目前阶段完全免费。Apple 全家桶可在 App Store 直接下载,Windows
             与 Linux 桌面端 100% 免费开源,GitHub 上获取最新构建。
           </p>
 
           <ul
-            className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-3"
+            className="mt-10 sm:mt-12 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3"
             aria-label="BoxPlayer 支持的下载平台"
           >
             {PLATFORMS.map((p) => {
@@ -101,12 +101,12 @@ export default function Download() {
                     <div className="font-semibold text-ink-900 text-sm">
                       {p.name}
                     </div>
-                    <div className="text-ink-500 text-xs mt-0.5">{p.desc}</div>
+                    <div className="text-ink-500 text-xs mt-0.5 leading-snug">{p.desc}</div>
                     <div
                       className={
                         p.accent === "muted"
-                          ? "mt-3 text-xs font-medium text-ink-300"
-                          : "mt-3 text-xs font-semibold text-skype-deep"
+                          ? "mt-2 sm:mt-3 text-xs font-medium text-ink-300"
+                          : "mt-2 sm:mt-3 text-xs font-semibold text-skype-deep"
                       }
                     >
                       {p.cta}
@@ -123,12 +123,12 @@ export default function Download() {
                       href={p.href}
                       target="_blank"
                       rel="noopener"
-                      className="card-soft px-4 py-5 flex flex-col items-center text-left gap-2 hover:-translate-y-0.5 hover:shadow-lg transition h-full"
+                      className="card-soft px-3 py-4 sm:px-4 sm:py-5 flex flex-col items-center text-left gap-2 hover:-translate-y-0.5 hover:shadow-lg transition h-full"
                     >
                       {inner}
                     </a>
                   ) : (
-                    <div className="card-soft px-4 py-5 flex flex-col items-center text-left gap-2 opacity-70 h-full">
+                    <div className="card-soft px-3 py-4 sm:px-4 sm:py-5 flex flex-col items-center text-left gap-2 opacity-70 h-full">
                       {inner}
                     </div>
                   )}
@@ -137,7 +137,7 @@ export default function Download() {
             })}
           </ul>
 
-          <p className="mt-8 text-xs text-ink-500">
+          <p className="mt-6 sm:mt-8 text-xs text-ink-500 leading-relaxed">
             App Store 适用于 iOS 16+ / iPadOS 16+ / tvOS 16+ / macOS 13+ ·
             Windows 10+ 与主流 Linux 发行版从 GitHub Release 获取。
           </p>

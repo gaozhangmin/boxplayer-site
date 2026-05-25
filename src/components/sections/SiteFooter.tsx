@@ -8,10 +8,10 @@ export default function SiteFooter() {
   return (
     <footer
       role="contentinfo"
-      className="border-t border-ink-100 py-14 mt-10"
+      className="border-t border-ink-100 py-10 sm:py-14 mt-10"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div className="flex items-center gap-2.5">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
           <div
             className="w-7 h-7 rounded-lg bg-sky-100 grid place-items-center ring-1 ring-sky-200"
             aria-hidden
