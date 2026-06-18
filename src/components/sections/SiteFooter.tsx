@@ -59,14 +59,14 @@ export default function SiteFooter() {
             className="hover:text-skype-deep transition"
             rel="nofollow"
           >
-            Privacy
+            隐私政策
           </Link>
           <Link
             href="/terms"
             className="hover:text-skype-deep transition"
             rel="nofollow"
           >
-            Terms
+            使用条款
           </Link>
         </nav>
       </div>

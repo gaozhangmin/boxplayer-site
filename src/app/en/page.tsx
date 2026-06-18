@@ -329,6 +329,20 @@ export default function HomeEn() {
             <a href="#download" className="hover:text-skype-deep transition">
               Download
             </a>
+            <Link
+              href="/en/privacy"
+              className="hover:text-skype-deep transition"
+              rel="nofollow"
+            >
+              Privacy
+            </Link>
+            <Link
+              href="/en/terms"
+              className="hover:text-skype-deep transition"
+              rel="nofollow"
+            >
+              Terms
+            </Link>
           </nav>
         </div>
       </footer>

@@ -75,5 +75,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: `${SITE_URL}/privacy/`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.3,
+      alternates: {
+        languages: {
+          "zh-CN": `${SITE_URL}/privacy/`,
+          "en-US": `${SITE_URL}/en/privacy/`,
+          "x-default": `${SITE_URL}/privacy/`,
+        },
+      },
+    },
+    {
+      url: `${SITE_URL}/terms/`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.3,
+      alternates: {
+        languages: {
+          "zh-CN": `${SITE_URL}/terms/`,
+          "en-US": `${SITE_URL}/en/terms/`,
+          "x-default": `${SITE_URL}/terms/`,
+        },
+      },
+    },
   ];
 }
