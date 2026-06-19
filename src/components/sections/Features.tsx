@@ -12,6 +12,7 @@ const FEATURES_EN = [
   { icon: Search, title: "Global Search · Local + Web", body: "Search across all cloud drives and media servers in one click. File names, folders, metadata all covered. Save Aliyun/Quark share links directly to your drive." },
   { icon: Globe, title: "TMDB + Douban Movie Discovery", body: "Real-time trending movie charts. Find something you like and search your drives for it instantly. TMDB trending/popular/top-rated and Douban Top250." },
 ];
+const OLD_FEATURES = [
   { icon: Cloud, title: "Cloud-direct streaming · 云盘直链播放", body: "阿里云盘、百度网盘、OneDrive、Google Drive、Dropbox、115 网盘、PikPak — 不下载,4K 秒开,边看边缓存,告别先下载再观看的老路。" },
   { icon: Sparkles, title: "True 4K HDR · 杜比视界 · UHD 原盘", body: "ISO 原盘、BDMV、VIDEO_TS、Dolby Vision、HDR10+、Dolby Atmos、DTS-HD MA、TrueHD 全支持,REMUX 文件原码率直出。" },
   { icon: Layers, title: "Smart media library · 海报墙刮削器", body: "海报墙、电影 / 剧集 / 番剧自动识别、TMDB 元数据、外挂字幕自动匹配 — 你的硬盘瞬间变 Netflix 体验。" },

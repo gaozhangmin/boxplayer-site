@@ -28,17 +28,8 @@ export default function Showcase({ lang = "zh" }: { lang?: "en" | "zh" }) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="max-w-3xl">
           <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">{t.badge}</span>
-          </span>
-          <h2
-            id="showcase-heading"
-            className="font-display mt-3 sm:mt-4 text-[clamp(1.75rem,6vw,3.25rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
-          >
-            Built for the way{" "}
-            <span className="italic text-skype-deep">cinephiles</span> watch.
-          </h2>
-          <p className="mt-4 sm:mt-5 text-ink-500 text-base sm:text-lg leading-relaxed">
-            从一面海报墙开始,到一帧 HDR 画面结束 — 每个细节都为长片观影手感打磨。
-          </p>
+          <h2 id="showcase-heading" className="font-display mt-3 sm:mt-4 text-[clamp(1.75rem,6vw,3.25rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance">{t.heading}</h2>
+          <p className="mt-4 sm:mt-5 text-ink-500 text-base sm:text-lg leading-relaxed">{t.desc}</p>
         </div>
 
         <div className="mt-10 sm:mt-14 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
