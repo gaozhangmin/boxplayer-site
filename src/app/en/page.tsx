@@ -304,7 +304,7 @@ export default function HomeEn() {
             </div>
           </div>
         </section>
-        <PricingSection />
+        <PricingSection lang="en" />
       </main>
 
       <footer role="contentinfo" className="border-t border-ink-100 py-14 mt-10">

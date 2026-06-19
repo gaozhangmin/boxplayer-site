@@ -16,9 +16,9 @@ export default function Home() {
       <SiteNav />
       <main className="flex-1">
         <Hero />
-        <Features />
-        <PricingSection />
-        <Showcase />
+        <Features lang="zh" />
+        <PricingSection lang="zh" />
+        <Showcase lang="zh" />
         <Sources />
         <OpenSource />
         <DeveloperCLI />
