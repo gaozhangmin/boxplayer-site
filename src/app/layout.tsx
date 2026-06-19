@@ -11,9 +11,9 @@ const geistSans = Geist({
 const SITE_URL = "https://xbysite.pages.dev";
 const SITE_NAME = "BoxPlayer";
 const TITLE =
-  "BoxPlayer — iOS · Apple TV · macOS · Windows · Linux 4K HDR 视频播放器,Plex / Jellyfin / Emby 客户端";
+  "BoxPlayer — 云盘管理 · AI 智能搜索 · 4K HDR 播放器 · 全网资源聚合,Plex / Jellyfin / Emby 客户端";
 const DESCRIPTION =
-  "BoxPlayer 是免费开源的跨平台视频播放器与媒体服务器客户端 — iOS、Apple TV、macOS / Windows / Linux 桌面播放器,原生 Plex、Jellyfin、Emby、Kodi 客户端,直连 Windows / Linux 自建媒体服务器、自建 NFS、SMB、WebDAV、FTP、群晖 / 威联通 / TrueNAS / unRAID NAS,以及阿里云盘、百度网盘、OneDrive、Google Drive、Dropbox、115、PikPak。支持 4K HDR10、Dolby Vision 杜比视界、Dolby Atmos、HDR10+、DTS-HD MA、TrueHD、ISO 原盘、BDMV、UHD 蓝光、MKV / MP4 / TS,适合家庭影院、私人影院、自建影音库、追剧、番剧、纪录片。";
+  "BoxPlayer 是免费开源的跨平台云盘管理器与 AI 智能搜索助手。AI Agent 一句话搜所有云盘+全网资源,AI 阅读助手,文件查重整理。同时是 4K HDR 视频播放器与媒体服务器客户端 — iOS、Apple TV、macOS / Windows / Linux,原生 Plex、Jellyfin、Emby 客户端,直连阿里云盘、百度网盘、OneDrive、Google Drive、Dropbox、115、PikPak、夸克等 10+ 网盘。支持 4K HDR10、Dolby Vision、HDR10+,适合家庭影院、私人影院、自建影音库。";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -35,6 +35,20 @@ export const metadata: Metadata = {
   authors: [{ name: "BoxPlayer Team" }],
   generator: "Next.js",
   keywords: [
+    // AI & cloud drive
+    "AI 网盘搜索",
+    "AI 智能搜索",
+    "AI 文件整理",
+    "AI 阅读助手",
+    "网盘资源搜索",
+    "全网资源搜索",
+    "云盘管理",
+    "云盘管理器",
+    "AI Agent",
+    "AI search cloud drive",
+    "cloud drive manager",
+    "cloud drive AI assistant",
+
     // 品牌
     "BoxPlayer",
     "小白羊网盘",
@@ -379,17 +393,19 @@ const STRUCTURED_DATA = [
       priceCurrency: "USD",
     },
     featureList: [
+      "AI Agent — natural language smart search across all cloud drives and web sources",
+      "AI File Organizer — dedup, storage analysis, auto-categorization",
+      "AI Reading Companion — context-aware Q&A for PDF/EPUB",
+      "Text-to-Speech and Instant Translation for imported books",
+      "Global web search for public cloud drive resources, one-click save to your drive",
+      "TMDB + Douban movie discovery with direct cloud drive search",
       "4K HDR · Dolby Vision · HDR10+ playback",
       "Cloud direct streaming (Aliyun, OneDrive, Google Drive, Dropbox, Baidu)",
       "Native Plex, Jellyfin and Emby client on iOS, Apple TV, macOS, Windows and Linux",
-      "Self-hosted media server friendly — connect your own Plex / Jellyfin / Emby on Windows or Linux",
-      "WebDAV, SMB, NFS and FTP network shares — including self-hosted NFS",
+      "WebDAV, SMB, NFS and FTP network shares",
       "NAS ready — Synology, QNAP, TrueNAS, unRAID",
-      "Smart media library with TMDB metadata",
       "Cross-device progress sync",
-      "ISO and original disc playback",
-      "Open source on Windows and Linux (MIT)",
-      "AI-driven cloud library management via clouddrive-cli + MCP",
+      "Open source (MIT)",
     ],
     aggregateRating: {
       "@type": "AggregateRating",
