@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Cloud, Sparkles, Layers, Zap, Repeat, Shield, Apple, Smartphone, Monitor, Tv } from "lucide-react";
+import PricingSection from "@/components/sections/PricingSection";
 
 const SITE_URL = "https://xbysite.pages.dev";
 const TITLE_EN = "BoxPlayer — Cross-platform 4K HDR media player & Plex / Jellyfin / Emby client for Windows, Linux, macOS, Apple TV and iOS";
@@ -303,6 +304,7 @@ export default function HomeEn() {
             </div>
           </div>
         </section>
+        <PricingSection />
       </main>
 
       <footer role="contentinfo" className="border-t border-ink-100 py-14 mt-10">

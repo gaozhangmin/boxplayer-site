@@ -1,6 +1,26 @@
-import { Cloud, Sparkles, Layers, Zap, Shield, Repeat } from "lucide-react";
+import { Cloud, Sparkles, Layers, Zap, Shield, Repeat, Bot, BookOpen, Search, Globe } from "lucide-react";
 
 const FEATURES = [
+  {
+    icon: Bot,
+    title: "AI Agent · 智能搜索助手",
+    body: "用自然语言描述需求,AI 自动搜索所有云盘和全网公开资源。查重、空间分析、文件分类整理 — 一句话搞定。Pro 版无限次使用。",
+  },
+  {
+    icon: BookOpen,
+    title: "AI 阅读助手 · 朗读 · 翻译",
+    body: "阅读 PDF/EPUB 时随时向 AI 提问,结合上下文回答。语音朗读 5000 字/天,多音色可选。选中文字秒翻译,Google/Azure/AI 三引擎。",
+  },
+  {
+    icon: Search,
+    title: "全局搜索 · 本地 + 全网",
+    body: "一键搜所有云盘 + 媒体服务器,文件名、文件夹、元数据全覆盖。全网公开网盘资源搜索,找到阿里云盘/夸克分享链接直接转存。",
+  },
+  {
+    icon: Globe,
+    title: "TMDB + 豆瓣电影发现",
+    body: "实时热门电影排行榜,看到想看的直接搜云盘资源。支持 TMDB 热映/流行/高分和豆瓣 Top250/新片/口碑榜。",
+  },
   {
     icon: Cloud,
     title: "Cloud-direct streaming · 云盘直链播放",

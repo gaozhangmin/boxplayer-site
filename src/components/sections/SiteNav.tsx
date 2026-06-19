@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 
 const NAV = [
   { href: "#features", label: "Features" },
+  { href: "#pricing", label: "Pricing" },
   { href: "#opensource", label: "Open source" },
   { href: "#cli", label: "CLI · Agent" },
   { href: "#faq", label: "FAQ" },

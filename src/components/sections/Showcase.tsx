@@ -2,28 +2,40 @@ import Image from "next/image";
 
 const SHOTS = [
   {
-    src: "/images/desktop/win-media-library.png",
-    title: "Media library",
-    desc: "海报墙 · 元数据 · 自动识别",
-    alt: "BoxPlayer 媒体库界面 — 海报墙、TMDB 元数据、剧集自动识别",
+    src: "/images/desktop/ai-agent.png",
+    title: "AI Agent",
+    desc: "AI 搜索 · 文件整理 · 智能助手",
+    alt: "BoxPlayer AI Agent — 自然语言搜索、文件查重、空间分析",
   },
   {
-    src: "/images/desktop/win-anime-library.png",
-    title: "Anime library",
-    desc: "番剧 · 季度 · 进度同步",
-    alt: "BoxPlayer 番剧库界面 — 季度分组与跨设备进度同步",
+    src: "/images/desktop/book-reader.png",
+    title: "AI Reader",
+    desc: "AI 阅读 · 语音朗读 · 即时翻译",
+    alt: "BoxPlayer AI 阅读器 — PDF/EPUB 阅读、AI 问答、TTS 朗读、翻译",
   },
   {
-    src: "/images/desktop/win-media-server.png",
-    title: "Media server",
-    desc: "Plex / Jellyfin / Emby · Windows / Linux 自建均可",
-    alt: "BoxPlayer 媒体服务器界面 — 原生连接 Windows / Linux / Docker / NAS 上自建的 Plex、Jellyfin、Emby 媒体服务器",
+    src: "/images/desktop/search-global.png",
+    title: "Global Search",
+    desc: "全网网盘资源搜索",
+    alt: "BoxPlayer 全网搜索 — 聚合阿里云盘、夸克、百度等平台公开资源",
   },
   {
-    src: "/images/desktop/win-file-manager.png",
-    title: "File manager",
-    desc: "云盘 · WebDAV · SMB · 自建 NFS 一站直连",
-    alt: "BoxPlayer 文件管理器 — 阿里云盘、OneDrive、WebDAV、SMB、NFS、FTP、群晖 / TrueNAS 自建挂载",
+    src: "/images/desktop/search-local.png",
+    title: "Local Search",
+    desc: "全云盘 + 媒体服务器检索",
+    alt: "BoxPlayer 本地搜索 — 一键搜索所有已登录云盘和媒体服务器",
+  },
+  {
+    src: "/images/desktop/book-home.png",
+    title: "Book Library",
+    desc: "书籍库 · 扫描 · 分类管理",
+    alt: "BoxPlayer 书籍库 — 全云盘扫描、格式识别、书架管理",
+  },
+  {
+    src: "/images/desktop/music-library.png",
+    title: "Music Library",
+    desc: "音乐库 · 艺人 · 专辑",
+    alt: "BoxPlayer 音乐库 — 全云盘音乐扫描、专辑封面、艺人分组",
   },
 ];
 
