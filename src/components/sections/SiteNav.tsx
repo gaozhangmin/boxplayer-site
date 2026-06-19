@@ -3,19 +3,27 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const NAV = [
-  { href: "#features", label: "Features" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#opensource", label: "Open source" },
-  { href: "#cli", label: "CLI · Agent" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#download", label: "Download" },
+  { href: "/#features", label: "Features" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/#opensource", label: "Open source" },
+  { href: "/#cli", label: "CLI · Agent" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#download", label: "Download" },
 ];
 
 export default function SiteNav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname() || "/";
+  const isEn = pathname.startsWith("/en");
+  // Mirror the current path on the other locale: /en/x <-> /x
+  const otherHref = isEn
+    ? pathname.replace(/^\/en/, "") || "/"
+    : `/en${pathname === "/" ? "" : pathname}`;
+  const langLabel = isEn ? "中文" : "EN";
 
   return (
     <header
@@ -51,21 +59,27 @@ export default function SiteNav() {
         <ul className="hidden md:flex items-center gap-1 text-sm list-none">
           {NAV.map((n) => (
             <li key={n.href}>
-              <a href={n.href} className="btn-ghost text-sm">
-                {n.label}
-              </a>
+              <Link href={n.href} className="btn-ghost text-sm">{n.label}</Link>
             </li>
           ))}
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#download"
+          <Link
+            href={otherHref}
+            hrefLang={isEn ? "zh-CN" : "en-US"}
+            className="btn-ghost text-sm px-2.5 sm:px-3"
+            aria-label={isEn ? "Switch to Chinese" : "切换到英文"}
+          >
+            {langLabel}
+          </Link>
+          <Link
+            href="/#download"
             className="btn-primary text-xs sm:text-sm px-3 sm:px-6 py-2 sm:py-3"
             aria-label="Get BoxPlayer — 跳转到下载区域"
           >
             Get BoxPlayer
-          </a>
+          </Link>
           <button
             type="button"
             aria-label={open ? "关闭菜单" : "打开菜单"}
@@ -91,15 +105,25 @@ export default function SiteNav() {
           <ul className="mx-auto max-w-7xl px-4 sm:px-6 py-3 flex flex-col gap-1 list-none">
             {NAV.map((n) => (
               <li key={n.href}>
-                <a
+                <Link
                   href={n.href}
                   onClick={() => setOpen(false)}
                   className="block px-3 py-2.5 rounded-lg text-ink-700 font-medium hover:bg-sky-50 hover:text-skype-deep transition"
                 >
                   {n.label}
-                </a>
+                </Link>
               </li>
             ))}
+            <li className="mt-1 pt-2 border-t border-ink-100">
+              <Link
+                href={otherHref}
+                hrefLang={isEn ? "zh-CN" : "en-US"}
+                onClick={() => setOpen(false)}
+                className="block px-3 py-2.5 rounded-lg text-ink-700 font-medium hover:bg-sky-50 hover:text-skype-deep transition"
+              >
+                {isEn ? "中文" : "English"}
+              </Link>
+            </li>
           </ul>
         </div>
       )}

@@ -36,6 +36,9 @@ export default function SiteFooter() {
           <a href="#features" className="hover:text-skype-deep transition">
             Features
           </a>
+          <Link href="/pricing" className="hover:text-skype-deep transition">
+            Pricing
+          </Link>
           <a href="#opensource" className="hover:text-skype-deep transition">
             Open source
           </a>

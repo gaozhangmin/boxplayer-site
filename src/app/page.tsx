@@ -1,7 +1,6 @@
 import SiteNav from "@/components/sections/SiteNav";
 import Hero from "@/components/sections/Hero";
 import Features from "@/components/sections/Features";
-import PricingSection from "@/components/sections/PricingSection";
 import Showcase from "@/components/sections/Showcase";
 import Sources from "@/components/sections/Sources";
 import OpenSource from "@/components/sections/OpenSource";
@@ -15,9 +14,8 @@ export default function Home() {
     <>
       <SiteNav />
       <main className="flex-1">
-        <Hero />
+        <Hero lang="zh" />
         <Features lang="zh" />
-        <PricingSection lang="zh" />
         <Showcase lang="zh" />
         <Sources />
         <OpenSource />
