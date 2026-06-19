@@ -1,8 +1,24 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Check, X, Minus, ArrowRight, Loader2 } from "lucide-react";
+import { Check, X, Minus, ArrowRight, Loader2, CheckCircle } from "lucide-react";
 import Link from "next/link";
+
+function usePaymentSuccess() {
+  const [paid, setPaid] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const p = new URLSearchParams(window.location.hash.replace("#pricing", "").replace(/^\?/, ""));
+    if (p.get("paid") === "success") {
+      setPaid(true);
+      // Redirect back to app after showing success
+      setTimeout(() => {
+        window.location.href = "boxplayer-auth://payment-success";
+      }, 3000);
+    }
+  }, []);
+  return paid;
+}
 
 const FEATURES = [
   { name: "Cloud drive file management", free: true, pro: true },
@@ -21,12 +37,26 @@ const FEATURES = [
 ];
 
 export default function PricingSection() {
+  const paymentSuccess = usePaymentSuccess();
+
   return (
     <section
       id="pricing"
       aria-labelledby="pricing-heading"
       className="relative py-16 sm:py-24 md:py-32 bg-sky-50/30"
     >
+      {paymentSuccess && (
+        <div className="mx-auto max-w-4xl px-4 mb-8">
+          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 flex items-center gap-4">
+            <CheckCircle className="w-8 h-8 text-emerald-500 flex-shrink-0" />
+            <div>
+              <p className="text-lg font-semibold text-emerald-800">Payment successful!</p>
+              <p className="text-sm text-emerald-600">Activating Pro in the app…</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-10">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">
