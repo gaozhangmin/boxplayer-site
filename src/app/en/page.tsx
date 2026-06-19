@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function HomeEn() {
   return (
     <>
-      <SiteNav />
+      <SiteNav lang="en" />
       <main className="flex-1">
         <Hero lang="en" />
         <Features lang="en" />
@@ -41,7 +41,7 @@ export default function HomeEn() {
         <Sources />
         <OpenSource />
         <DeveloperCLI />
-        <Download />
+        <Download lang="en" />
         <FAQ />
       </main>
       <SiteFooter />

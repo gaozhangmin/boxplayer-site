@@ -12,7 +12,7 @@ import SiteFooter from "@/components/sections/SiteFooter";
 export default function Home() {
   return (
     <>
-      <SiteNav />
+      <SiteNav lang="zh" />
       <main className="flex-1">
         <Hero lang="zh" />
         <Features lang="zh" />
@@ -20,7 +20,7 @@ export default function Home() {
         <Sources />
         <OpenSource />
         <DeveloperCLI />
-        <Download />
+        <Download lang="zh" />
         <FAQ />
       </main>
       <SiteFooter />

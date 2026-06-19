@@ -56,7 +56,8 @@ const PLATFORMS = [
   },
 ];
 
-export default function Download() {
+export default function Download({ lang = "zh" }: { lang?: "en" | "zh" }) {
+  const t = lang === "en" ? { mac: "macOS", ios: "iOS · iPadOS", atv: "Apple TV", windows: "Windows", linux: "Linux", android: "Android", heading: "Download BoxPlayer", appStore: "Download on App Store", github: "GitHub Releases", badge: "Download" } : { mac: "macOS", ios: "iOS · iPadOS", atv: "Apple TV", windows: "Windows", linux: "Linux", android: "Android", heading: "下载 BoxPlayer", appStore: "App Store 下载", github: "GitHub 下载", badge: "下载" };
   return (
     <section
       id="download"

@@ -6,16 +6,23 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
-const NAV = [
-  { href: "/#features", label: "Features" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/#opensource", label: "Open source" },
-  { href: "/#cli", label: "CLI · Agent" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/#download", label: "Download" },
-];
 
-export default function SiteNav() {
+
+const NAV_ZH = [
+  { href: "#features", label: "功能" }, { href: "#pricing", label: "价格" },
+  { href: "#opensource", label: "开源" }, { href: "#cli", label: "CLI · Agent" },
+  { href: "#faq", label: "FAQ" }, { href: "#download", label: "下载" },
+];
+const NAV_EN = [
+  { href: "#features", label: "Features" }, { href: "#pricing", label: "Pricing" },
+  { href: "#opensource", label: "Open Source" }, { href: "#cli", label: "CLI · Agent" },
+  { href: "#faq", label: "FAQ" }, { href: "#download", label: "Download" },
+];
+export default function SiteNav({ lang = "zh" }: { lang?: "en" | "zh" }) {
+  const NAV = lang === "en" ? NAV_EN : NAV_ZH;
+  const homeLabel = lang === "en" ? "Home" : "首页";
+  const langSwitch = lang === "en" ? { href: "/", label: "中文" } : { href: "/en", label: "English" };
+
   const [open, setOpen] = useState(false);
   const pathname = usePathname() || "/";
   const isEn = pathname.startsWith("/en");
