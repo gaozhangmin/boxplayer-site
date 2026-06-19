@@ -16,6 +16,7 @@ const SOURCES = [
 ];
 
 export default function Sources({ lang = "zh" }: { lang?: "en" | "zh" }) {
+  const t = lang === "en" ? { badge: "Sources" } : { badge: "数据源" };
   return (
     <section
       id="sources"

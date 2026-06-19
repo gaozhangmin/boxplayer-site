@@ -23,6 +23,7 @@ const HIGHLIGHTS = [
 ];
 
 export default function OpenSource({ lang = "zh" }: { lang?: "en" | "zh" }) {
+  const t = lang === "en" ? { badge: "Open Source", heading: <>Free and <span className="italic text-skype-deep">open source</span> forever.</>, desc: "MIT licensed. No tracking, no ads, no data collection. Your library stays yours.", github: "View on GitHub" } : { badge: "开源", heading: <>{t.heading}</>, desc: "MIT 协议开源。无追踪、无广告、不收集数据。你的资料库永远属于你。", github: "GitHub 开源主页" };
   return (
     <section
       id="opensource"
@@ -52,7 +53,7 @@ export default function OpenSource({ lang = "zh" }: { lang?: "en" | "zh" }) {
             </h2>
             <p className="mt-5 sm:mt-6 text-ink-500 text-base sm:text-lg leading-relaxed max-w-xl">
               市面上跨平台播放器要么收钱、要么闭源、要么砍 Linux。
-              BoxPlayer 在 Windows 与 Linux 桌面端是 <strong className="text-ink-900">完全免费 + 代码开源</strong>
+              {t.desc}
               的 — 一份代码,所有人都能编译、审计、修改、分发。
             </p>
 

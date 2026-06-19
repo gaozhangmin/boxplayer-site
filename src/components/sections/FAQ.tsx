@@ -47,7 +47,7 @@ const FAQS = [
 ];
 
 export default function FAQ({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { title: "Frequently Asked Questions" } : { title: "常见问题" };
+  const t = lang === "en" ? { title: "Frequently Asked Questions", badge: "FAQ" } : { title: "常见问题", badge: "FAQ" };
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section
@@ -57,8 +57,7 @@ export default function FAQ({ lang = "zh" }: { lang?: "en" | "zh" }) {
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-10">
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">
-            FAQ
+          <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">{t.badge}
           </span>
           <h2
             id="faq-heading"

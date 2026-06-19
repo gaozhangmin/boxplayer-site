@@ -52,6 +52,7 @@ const AGENT_EXAMPLES = [
 ];
 
 export default function DeveloperCLI({ lang = "zh" }: { lang?: "en" | "zh" }) {
+  const t = lang === "en" ? { badge: "CLI · Agent", heading: <>{t.heading}</> } : { badge: "CLI · Agent", heading: <>{t.heading}</> };
   return (
     <section
       id="cli"
