@@ -36,22 +36,34 @@ export const metadata: Metadata = {
   generator: "Next.js",
   keywords: [
     // AI & cloud drive
-    "AI 网盘搜索",
-    "AI 智能搜索",
-    "AI 文件整理",
-    "AI 阅读助手",
-    "网盘资源搜索",
-    "全网资源搜索",
-    "云盘管理",
-    "云盘管理器",
-    "AI Agent",
-    "AI search cloud drive",
-    "cloud drive manager",
-    "cloud drive AI assistant",
+    "AI 网盘搜索", "AI 智能搜索", "AI 文件整理", "AI 阅读助手",
+    "网盘资源搜索", "全网资源搜索", "云盘管理", "云盘管理器",
+    "AI Agent", "AI search cloud drive", "cloud drive manager", "cloud drive AI assistant",
 
     // 品牌
-    "BoxPlayer",
-    "小白羊网盘",
+    "BoxPlayer", "小白羊网盘", "小白羊", "aliyunpan", "xby drive", "BoxPlayer 下载",
+    "BoxPlayer iOS", "BoxPlayer Mac", "BoxPlayer Windows",
+
+    // 竞品对比关键词 (high intent, competitor alternatives)
+    "Infuse 替代", "Infuse 免费替代", "Infuse alternative free",
+    "VidHub 替代", "VidHub alternative",
+    "SenPlayer 替代", "SenPlayer alternative",
+    "nPlayer 替代", "VLC 替代", "PotPlayer 替代",
+    "Kodi 替代", "Kodi alternative",
+    "MX Player 替代",
+    "阿里云盘播放器", "阿里云盘视频播放器",
+    "aliyundrive player", "aliyundrive video player",
+    "阿里云盘 4K 播放器", "阿里云盘 原画 播放器",
+
+    // 功能搜索
+    "jellyfin ios 播放器", "jellyfin 客户端 ios", "jellyfin apple tv",
+    "emby 播放器", "emby 客户端", "emby ios", "emby apple tv",
+    "plex 客户端", "plex 播放器", "plex ios", "plex apple tv",
+    "infuse 播放器", "vidhub 播放器", "senplayer ios",
+
+    // 云盘搜索
+    "阿里云盘 资源搜索", "夸克网盘 资源搜索", "百度网盘 资源搜索",
+    "网盘资源 一键保存", "分享链接 转存", "网盘搜索 全网",
     "小白羊播放器",
     "xby drive",
     "BoxPlayer 下载",
