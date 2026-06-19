@@ -51,7 +51,7 @@ const AGENT_EXAMPLES = [
   },
 ];
 
-export default function DeveloperCLI() {
+export default function DeveloperCLI({ lang = "zh" }: { lang?: "en" | "zh" }) {
   return (
     <section
       id="cli"

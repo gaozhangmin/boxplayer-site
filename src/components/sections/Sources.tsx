@@ -15,7 +15,7 @@ const SOURCES = [
   { src: "/images/icons/icon_ftp.svg", name: "FTP", alt: "FTP / SFTP 协议 logo" },
 ];
 
-export default function Sources() {
+export default function Sources({ lang = "zh" }: { lang?: "en" | "zh" }) {
   return (
     <section
       id="sources"

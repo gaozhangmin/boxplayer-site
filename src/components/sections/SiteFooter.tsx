@@ -4,7 +4,7 @@ import { GithubIcon } from "@/components/icons/GithubIcon";
 
 const GITHUB_REPO = "https://github.com/gaozhangmin/boxplayer";
 
-export default function SiteFooter() {
+export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
   return (
     <footer
       role="contentinfo"

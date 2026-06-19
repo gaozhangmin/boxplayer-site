@@ -46,7 +46,8 @@ const FAQS = [
   },
 ];
 
-export default function FAQ() {
+export default function FAQ({ lang = "zh" }: { lang?: "en" | "zh" }) {
+  const t = lang === "en" ? { title: "Frequently Asked Questions" } : { title: "常见问题" };
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section

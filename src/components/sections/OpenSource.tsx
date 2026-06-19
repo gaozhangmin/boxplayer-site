@@ -22,7 +22,7 @@ const HIGHLIGHTS = [
   },
 ];
 
-export default function OpenSource() {
+export default function OpenSource({ lang = "zh" }: { lang?: "en" | "zh" }) {
   return (
     <section
       id="opensource"
