@@ -52,7 +52,7 @@ const AGENT_EXAMPLES = [
 ];
 
 export default function DeveloperCLI({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { badge: "CLI · Agent", heading: <>Developer tools for <span className="italic text-skype-deep">power users</span>.</> } : { badge: "CLI · Agent", heading: <>给<span className="italic text-skype-deep">开发者</span>的工具链。</> };
+  const t = lang === "en" ? { badge: "CLI · Agent" } : { badge: "CLI · Agent" };
   return (
     <section
       id="cli"
@@ -71,7 +71,7 @@ export default function DeveloperCLI({ lang = "zh" }: { lang?: "en" | "zh" }) {
             className="font-display mt-6 sm:mt-7 text-[clamp(1.875rem,6vw,3.5rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
           >
             让 AI 帮你{" "}
-            <span className="italic text-skype-deep">整理网盘</span>。
+            {t.heading}
           </h2>
           <p className="mt-5 sm:mt-6 text-ink-500 text-base sm:text-lg leading-relaxed">
             BoxPlayer 把网盘自动化抽出成 <code className="font-mono text-skype-deep bg-sky-50 px-1.5 py-0.5 rounded text-[0.92em]">clouddrive-cli</code> ——

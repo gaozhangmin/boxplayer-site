@@ -39,17 +39,14 @@ export default function OpenSource({ lang = "zh" }: { lang?: "en" | "zh" }) {
                 className="w-1.5 h-1.5 rounded-full bg-leaf"
                 aria-hidden
               />
-              <span className="hidden sm:inline">The only free &amp; open-source one</span>
+              <span className="hidden sm:inline">{t.badge}</span>
               <span className="sm:hidden">Free &amp; open-source</span>
             </span>
             <h2
               id="opensource-heading"
               className="font-display mt-6 sm:mt-7 text-[clamp(1.875rem,6vw,3.5rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
             >
-              全网唯一{" "}
-              <span className="italic text-skype-deep">免费开源</span>
-              <br className="hidden md:block" />
-              的跨端视频播放器。
+              {t.heading}
             </h2>
             <p className="mt-5 sm:mt-6 text-ink-500 text-base sm:text-lg leading-relaxed max-w-xl">
               市面上跨平台播放器要么收钱、要么闭源、要么砍 Linux。

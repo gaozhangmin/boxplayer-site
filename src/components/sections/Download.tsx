@@ -57,7 +57,7 @@ const PLATFORMS = [
 ];
 
 export default function Download({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { heading: "Download BoxPlayer", badge: "Download", descFree: "Free · All platforms", appStore: "App Store", github: "GitHub" } : { heading: "下载 BoxPlayer", badge: "下载", descFree: "目前免费 · 全平台可用", appStore: "App Store 下载", github: "GitHub 下载" };
+  const t = lang === "en" ? { heading: "Download BoxPlayer", badge: "Download", descFree: "{t.descFree}", appStore: "App Store", github: "GitHub" } : { heading: "下载 BoxPlayer", badge: "下载", descFree: "{t.descFree}", appStore: "App Store 下载", github: "GitHub 下载" };
   return (
     <section
       id="download"

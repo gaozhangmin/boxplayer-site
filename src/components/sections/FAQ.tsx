@@ -47,7 +47,7 @@ const FAQS = [
 ];
 
 export default function FAQ({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { title: "Frequently Asked Questions", badge: "FAQ" } : { title: "常见问题", badge: "FAQ" };
+  const t = lang === "en" ? { title: "{t.title}", badge: "FAQ" } : { title: "{t.title}", badge: "FAQ" };
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section
@@ -63,10 +63,10 @@ export default function FAQ({ lang = "zh" }: { lang?: "en" | "zh" }) {
             id="faq-heading"
             className="font-display mt-3 sm:mt-4 text-[clamp(1.75rem,6vw,3.25rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
           >
-            Questions, <span className="italic text-skype-deep">answered.</span>
+            {t.title}
           </h2>
           <p className="mt-4 sm:mt-5 text-ink-500 text-base sm:text-lg leading-relaxed">
-            关于 BoxPlayer 视频播放器、Plex / Jellyfin / Emby 客户端、云盘直链、4K HDR、AI Agent 整理网盘的常见问题。
+            关于 BoxPlayer 视频播放器、Plex / Jellyfin / Emby 客户端、云盘直链、4K HDR、AI Agent 整理网盘的{t.title}。
           </p>
         </div>
 
