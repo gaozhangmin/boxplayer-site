@@ -1,35 +1,37 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Check, ArrowRight, CheckCircle, Sparkles } from "lucide-react";
+import { AlertCircle, Check, ArrowRight, CheckCircle, Sparkles, XCircle } from "lucide-react";
 import Link from "next/link";
+import { useAuth } from "@/components/auth/AuthProvider";
 
-function usePaymentSuccess() {
-  const [paid, setPaid] = useState(false);
+function usePaymentStatus() {
+  const [status, setStatus] = useState<"" | "success" | "cancelled" | "failed">("");
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const p = new URLSearchParams(window.location.hash.replace("#pricing", "").replace(/^\?/, ""));
-    if (p.get("paid") === "success") {
-      setPaid(true);
-      setTimeout(() => { window.location.href = "boxplayer-auth://payment-success"; }, 3000);
-    }
-  }, []);
-  return paid;
-}
+    const p = new URLSearchParams(window.location.hash.replace("#pricing", "").replace(/^\?/, "") || window.location.search);
+    const paid = p.get("paid");
+    const nextStatus = paid === "success" ? "success" : paid === "cancelled" || paid === "canceled" || paid === "cancel" ? "cancelled" : paid === "failed" || paid === "failure" ? "failed" : "";
+    if (!nextStatus) return;
 
-type Cycle = "monthly" | "yearly" | "lifetime";
+    const paidTimer = window.setTimeout(() => setStatus(nextStatus), 0);
+    const appTimer = p.get("source") === "app"
+      ? window.setTimeout(() => { window.location.href = `boxplayer-auth://payment-${nextStatus}`; }, 1200)
+      : undefined;
+    return () => {
+      window.clearTimeout(paidTimer);
+      if (appTimer) window.clearTimeout(appTimer);
+    };
+  }, []);
+  return status;
+}
 
 const I18N = {
   en: {
     badge: "Pricing",
     title: <>Free forever. <span className="italic text-skype-deep">Pro when you need more.</span></>,
     desc: "Core file management, video playback, music, and local reading are always free. Upgrade to Pro for unlimited AI search, file organization, AI reading assistant, and more.",
-    cycles: {
-      monthly: { label: "Monthly", badge: "" },
-      yearly: { label: "Yearly", badge: "Save 34%" },
-      lifetime: { label: "Lifetime", badge: "Best value" },
-    } as Record<Cycle, { label: string; badge: string }>,
-    proPrice: { monthly: { amount: "$10", unit: "/mo", note: "Billed monthly" }, yearly: { amount: "$79", unit: "/yr", note: "≈ $6.6/mo · billed yearly" }, lifetime: { amount: "$199", unit: "", note: "One-time · lifetime access" } },
+    proPrice: { amount: "$199", unit: "", note: "One-time · lifetime access" },
     free: {
       name: "Free",
       cost: "$0",
@@ -64,25 +66,24 @@ const I18N = {
     },
     successTitle: "Payment successful!",
     successDesc: "Activating Pro in the app…",
+    cancelledTitle: "Purchase cancelled",
+    cancelledDesc: "No payment was completed. You can retry whenever you are ready.",
+    failedTitle: "Payment not completed",
+    failedDesc: "The checkout did not finish successfully. Please try again or contact support if this keeps happening.",
     ctaFoot: "Download the app and login to upgrade to Pro.",
     faqTitle: "Pricing FAQ",
     faqs: [
       { q: "What is Pro, and what do I get by upgrading?", a: "Pro unlocks the full power of BoxPlayer: unlimited AI Smart Search across all your cloud drives, unlimited global web search, one-click save of share links, AI file organizer & dedup, AI reading companion (PDF/EPUB), text-to-speech, instant translation, and TMDB + Douban movie discovery. The free tier remains free forever — Pro is for when you need unlimited AI and the advanced toolkit." },
-      { q: "How do I upgrade to Pro? Which payment methods are supported?", a: "Download BoxPlayer and log in, then pick a plan inside the app. Monthly, yearly and lifetime options are all available. Payment is completed securely through the app via card / Apple / Google Pay, and Pro activates instantly after checkout — no waiting." },
-      { q: "Does one subscription work on all my devices?", a: "Yes. Pro is tied to your BoxPlayer account — sign in on iPhone, iPad, Apple TV, Mac, Windows and Linux and Pro is active everywhere. Watch progress, library and favourites sync across every device automatically." },
-      { q: "Can I cancel or get a refund?", a: "Monthly and yearly plans can be cancelled at any time; you keep Pro until the end of the current billing period. If Lifetime doesn't work out, contact support within 14 days of purchase for a full refund." },
+      { q: "How do I upgrade to Pro? Which payment methods are supported?", a: "Download BoxPlayer and log in, then upgrade with the one-time lifetime plan. Payment is completed securely through Creem hosted checkout, and Pro activates after checkout." },
+      { q: "Does one subscription work on all my devices?", a: "For now, Pro covers Windows, Linux, and macOS devices signed in with the same BoxPlayer account." },
+      { q: "Can I get a refund?", a: "If Lifetime doesn't work out, contact support within 14 days of purchase for a refund." },
     ] as { q: string; a: string }[],
   },
   zh: {
     badge: "价格",
     title: <>永久免费。 <span className="italic text-skype-deep">专业版解锁更多。</span></>,
     desc: "基础文件管理、视频播放、音乐、本地阅读始终免费。升级 Pro 解锁无限 AI 搜索、文件整理、AI 阅读助手等高级功能。",
-    cycles: {
-      monthly: { label: "月付", badge: "" },
-      yearly: { label: "年付", badge: "省 34%" },
-      lifetime: { label: "终身", badge: "超值" },
-    } as Record<Cycle, { label: string; badge: string }>,
-    proPrice: { monthly: { amount: "$10", unit: "/月", note: "按月订阅" }, yearly: { amount: "$79", unit: "/年", note: "≈ $6.6/月 · 按年付费" }, lifetime: { amount: "$199", unit: "", note: "一次买断 · 终身使用" } },
+    proPrice: { amount: "$199", unit: "", note: "一次买断 · 终身使用" },
     free: {
       name: "免费版",
       cost: "$0",
@@ -117,33 +118,81 @@ const I18N = {
     },
     successTitle: "支付成功！",
     successDesc: "正在激活 App Pro…",
+    cancelledTitle: "已取消购买",
+    cancelledDesc: "本次未完成支付，没有产生专业版授权。你可以随时重新购买。",
+    failedTitle: "支付未完成",
+    failedDesc: "本次结账没有成功完成，请重试；如果持续失败，请联系支持。",
     ctaFoot: "下载 App 并登录后升级到专业版。",
     faqTitle: "价格常见问题",
     faqs: [
       { q: "什么是专业版？升级后能解锁哪些功能？", a: "专业版解锁 BoxPlayer 的全部能力：跨所有网盘的无限 AI 智能搜索、无限全网资源搜索、分享链接一键保存、AI 文件整理与查重、AI 阅读助手（PDF/EPUB）、语音朗读、即时翻译，以及 TMDB + 豆瓣电影发现。免费版永久免费 —— Pro 适合需要无限 AI 和高级工具链的用户。" },
-      { q: "怎么升级到专业版？支持哪些支付方式？", a: "下载 BoxPlayer 并登录，在 App 内选择套餐即可，支持月付、年付、终身三种方案。支付通过 App 内安全完成，支持银行卡 / Apple Pay / Google Pay，支付成功后 Pro 立即激活，无需等待。" },
-      { q: "一次订阅能在所有设备上使用吗？", a: "可以。Pro 与你的 BoxPlayer 账号绑定 —— 在 iPhone、iPad、Apple TV、Mac、Windows、Linux 登录同一账号即生效，观看进度、媒体库、收藏全设备自动同步。" },
-      { q: "可以取消或退款吗？", a: "月付、年付可随时取消，当前计费周期内继续享受 Pro。终身版如不满意，购买后 14 天内联系客服可全额退款。" },
+      { q: "怎么升级到专业版？支持哪些支付方式？", a: "下载 BoxPlayer 并登录后购买终身版。支付通过 Creem 托管结账页安全完成，支付后自动激活 Pro。" },
+      { q: "一次订阅能在所有设备上使用吗？", a: "暂时仅覆盖 Windows、Linux 和 macOS，使用同一 BoxPlayer 账号登录即可。" },
+      { q: "可以退款吗？", a: "终身版如不满意，购买后 14 天内可联系客服申请退款。" },
     ] as { q: string; a: string }[],
   },
 };
 
-const CYCLE_ORDER: Cycle[] = ["monthly", "yearly", "lifetime"];
-
 export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const paymentSuccess = usePaymentSuccess();
+  const paymentStatus = usePaymentStatus();
+  const { session, openLogin, refreshSubscription } = useAuth();
   const t = I18N[lang];
-  const [cycle, setCycle] = useState<Cycle>("yearly");
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
   const faqs = t.faqs;
-  const price = t.proPrice[cycle];
+  const price = t.proPrice;
+  const source = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("source") === "app" ? "app" : "web";
+
+  useEffect(() => {
+    if (paymentStatus === "success") void refreshSubscription();
+  }, [paymentStatus, refreshSubscription]);
+
+  async function handleCheckout() {
+    setCheckoutError("");
+    if (!session?.access_token) {
+      openLogin(lang);
+      return;
+    }
+    setCheckoutLoading(true);
+    try {
+      const resp = await fetch("/api/creem/checkout", {
+        method: "POST",
+        headers: { "content-type": "application/json", Authorization: `Bearer ${session.access_token}` },
+        body: JSON.stringify({ cycle: "lifetime", source }),
+      });
+      const payload = await resp.json();
+      if (!resp.ok || !payload.checkoutUrl) throw new Error(payload.error || "checkout_failed");
+      window.location.href = payload.checkoutUrl;
+    } catch (error) {
+      setCheckoutError(error instanceof Error ? error.message : "checkout_failed");
+    } finally {
+      setCheckoutLoading(false);
+    }
+  }
 
   return (
-    <div aria-labelledby="pricing-heading" className="relative py-16 sm:py-24 md:py-32 bg-sky-50/30">
-      {paymentSuccess && (
+    <div id="pricing" aria-labelledby="pricing-heading" className="relative py-16 sm:py-24 md:py-32 bg-sky-50/30">
+      {paymentStatus === "success" && (
         <div className="mx-auto max-w-4xl px-4 mb-8">
           <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 flex items-center gap-4">
             <CheckCircle className="w-8 h-8 text-emerald-500 flex-shrink-0" />
             <div><p className="text-lg font-semibold text-emerald-800">{t.successTitle}</p><p className="text-sm text-emerald-600">{t.successDesc}</p></div>
+          </div>
+        </div>
+      )}
+      {paymentStatus === "cancelled" && (
+        <div className="mx-auto max-w-4xl px-4 mb-8">
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 flex items-center gap-4">
+            <AlertCircle className="w-8 h-8 text-amber-500 flex-shrink-0" />
+            <div><p className="text-lg font-semibold text-amber-800">{t.cancelledTitle}</p><p className="text-sm text-amber-700">{t.cancelledDesc}</p></div>
+          </div>
+        </div>
+      )}
+      {paymentStatus === "failed" && (
+        <div className="mx-auto max-w-4xl px-4 mb-8">
+          <div className="bg-rose-50 border border-rose-200 rounded-2xl p-6 flex items-center gap-4">
+            <XCircle className="w-8 h-8 text-rose-500 flex-shrink-0" />
+            <div><p className="text-lg font-semibold text-rose-800">{t.failedTitle}</p><p className="text-sm text-rose-700">{t.failedDesc}</p></div>
           </div>
         </div>
       )}
@@ -153,35 +202,6 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
           <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">{t.badge}</span>
           <h2 id="pricing-heading" className="font-display mt-3 text-[clamp(1.75rem,5vw,3rem)] leading-[1.1] tracking-[-0.02em] text-ink-900">{t.title}</h2>
           <p className="mt-4 text-ink-500 text-base sm:text-lg leading-relaxed">{t.desc}</p>
-        </div>
-
-        {/* Billing cycle toggle */}
-        <div className="flex justify-center mb-10">
-          <div role="tablist" aria-label={lang === "en" ? "Billing cycle" : "计费周期"} className="inline-flex items-center gap-1 p-1 bg-cloud border border-ink-100 rounded-full shadow-sm">
-            {CYCLE_ORDER.map((c) => {
-              const active = cycle === c;
-              const meta = t.cycles[c];
-              return (
-                <button
-                  key={c}
-                  role="tab"
-                  aria-selected={active}
-                  type="button"
-                  onClick={() => setCycle(c)}
-                  className={`relative inline-flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full text-sm font-semibold transition ${
-                    active ? "bg-skype-deep text-white shadow" : "text-ink-500 hover:text-skype-deep"
-                  }`}
-                >
-                  {meta.label}
-                  {meta.badge && (
-                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${active ? "bg-white/20 text-white" : "bg-amber-100 text-gold"}`}>
-                      {meta.badge}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
-          </div>
         </div>
 
         {/* Plan cards */}
@@ -217,9 +237,10 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
               {price.unit && <span className="text-lg text-ink-500 font-medium">{price.unit}</span>}
             </div>
             <p className="mt-2 text-sm text-ink-500 leading-relaxed min-h-[2.5rem]">{price.note}</p>
-            <Link href="/#download" className="mt-5 inline-flex items-center justify-center gap-2 px-6 py-3 bg-skype-deep text-white rounded-xl font-semibold text-sm hover:opacity-90 transition shadow-lg shadow-skype-deep/20">
-              {t.pro.cta} <ArrowRight className="w-4 h-4" />
-            </Link>
+            <button type="button" disabled={checkoutLoading} onClick={handleCheckout} className="mt-5 inline-flex items-center justify-center gap-2 px-6 py-3 bg-skype-deep text-white rounded-xl font-semibold text-sm hover:opacity-90 transition shadow-lg shadow-skype-deep/20 disabled:opacity-60">
+              {checkoutLoading ? (lang === "en" ? "Opening checkout..." : "正在打开支付...") : t.pro.cta} <ArrowRight className="w-4 h-4" />
+            </button>
+            {checkoutError && <p className="mt-3 text-sm text-red-500 leading-relaxed">{checkoutError}</p>}
             <ul className="mt-6 space-y-3 list-none">
               {t.pro.features.map((f, i) => (
                 <li key={f} className={`flex items-start gap-2.5 text-sm ${i === 0 ? "font-semibold text-ink-900" : "text-ink-700"}`}>
@@ -247,7 +268,7 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
         {/* Footer CTA */}
         <div className="text-center mt-16">
           <p className="text-ink-500 text-sm mb-4">{t.ctaFoot}</p>
-          <Link href="/#download" className="inline-flex items-center gap-2 px-8 py-3.5 bg-skype-deep text-white rounded-xl font-semibold text-base hover:opacity-90 transition">{t.free.cta} <ArrowRight className="w-4 h-4" /></Link>
+          <button type="button" disabled={checkoutLoading} onClick={handleCheckout} className="inline-flex items-center gap-2 px-8 py-3.5 bg-skype-deep text-white rounded-xl font-semibold text-base hover:opacity-90 transition disabled:opacity-60">{t.pro.cta} <ArrowRight className="w-4 h-4" /></button>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import PricingSection from "@/components/sections/PricingSection";
 const SITE_URL = "https://xbysite.pages.dev";
 const TITLE = "Pricing — Free forever, Pro when you need more";
 const DESCRIPTION =
-  "BoxPlayer is free forever. Pro unlocks unlimited AI Smart Search, AI file organizer, AI reading companion and more. $10/mo, $79/yr (save 34%), or $199 lifetime — one subscription works on every device.";
+  "BoxPlayer is free forever. A one-time $199 Pro purchase unlocks unlimited AI Smart Search, file organization, and the AI reading companion on Windows, Linux, and macOS.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -36,11 +36,11 @@ export const metadata: Metadata = {
 export default function PricingEn() {
   return (
     <>
-      <SiteNav />
+      <SiteNav lang="en" />
       <main className="flex-1">
         <PricingSection lang="en" />
       </main>
-      <SiteFooter />
+      <SiteFooter lang="en" />
     </>
   );
 }

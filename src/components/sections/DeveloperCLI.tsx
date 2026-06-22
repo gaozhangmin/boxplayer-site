@@ -1,6 +1,6 @@
 import { Terminal, Bot, Cloud, Sparkles, Workflow, Package } from "lucide-react";
 
-const CLI_HIGHLIGHTS = [
+const CLI_HIGHLIGHTS_ZH = [
   {
     icon: Cloud,
     title: "7 个网盘统一接口",
@@ -18,7 +18,25 @@ const CLI_HIGHLIGHTS = [
   },
 ];
 
-const AGENT_EXAMPLES = [
+const CLI_HIGHLIGHTS_EN = [
+  {
+    icon: Cloud,
+    title: "Unified API for 7 cloud drives",
+    body: "Aliyun Drive, OneDrive, Dropbox, Box, Baidu Netdisk, 115, and PikPak — one command set, one JSON shape, one permission model.",
+  },
+  {
+    icon: Workflow,
+    title: "Three-step safety model",
+    body: "Generate a plan, validate with dry-run, then execute after user confirmation. Every write operation is traceable and undoable with ops undo.",
+  },
+  {
+    icon: Sparkles,
+    title: "AI-native media organization",
+    body: "Detect movies, TV shows, and anime automatically, then generate Jellyfin / Emby / Plex-friendly names so messy cloud folders become a real media library.",
+  },
+];
+
+const AGENT_EXAMPLES_ZH = [
   {
     prompt: "帮我看看阿里云盘里有哪些电影,统计一下数量",
     plan: [
@@ -51,8 +69,65 @@ const AGENT_EXAMPLES = [
   },
 ];
 
+const AGENT_EXAMPLES_EN = [
+  {
+    prompt: "Show me which movies are in Aliyun Drive and count them",
+    plan: [
+      "auth list --json",
+      "files walk --provider aliyun \\",
+      "  --path <Movies> --json > files.json",
+      "media scan --input files.json --json",
+    ],
+  },
+  {
+    prompt: "Rename the TV shows in Aliyun Drive for Jellyfin",
+    plan: [
+      "files walk --provider aliyun \\",
+      "  --path <TV> --json > files.json",
+      "media rename-plan --input files.json \\",
+      "  --style jellyfin --output plan.json",
+      "files rename-apply plan.json \\",
+      "  --current files.json --dry-run",
+      "files rename-apply plan.json \\",
+      "  --current files.json   # confirm",
+    ],
+  },
+  {
+    prompt: "Undo the rename operation I just ran",
+    plan: [
+      "ops list --json",
+      "ops undo <op-id> --dry-run --json",
+      "ops undo <op-id>",
+    ],
+  },
+];
+
 export default function DeveloperCLI({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { badge: "CLI · Agent", heading: <>Developer tools for <span className="italic text-skype-deep">power users</span>.</> } : { badge: "CLI · Agent", heading: <>给<span className="italic text-skype-deep">开发者</span>的工具链。</> };
+  const t = lang === "en"
+    ? {
+        heading: <>Developer tools for <span className="italic text-skype-deep">power users</span>.</>,
+        introLead: "Let AI drive your cloud drives.",
+        desc: <>BoxPlayer extracts cloud-drive automation into <code className="font-mono text-skype-deep bg-sky-50 px-1.5 py-0.5 rounded text-[0.92em]">clouddrive-cli</code> — a command-line tool for developers and a stable API for Claude, Codex, Cursor, or any MCP agent.</>,
+        highlights: CLI_HIGHLIGHTS_EN,
+        highlightsAria: "clouddrive-cli highlights",
+        installCliDesc: "Install globally from npm in seconds",
+        installSkillDesc: "Let Claude / Codex drive the CLI directly",
+        actionTitle: "Speak naturally. The agent runs commands.",
+        examples: AGENT_EXAMPLES_EN,
+        mcpDesc: <>exposes <code className="font-mono">files_walk</code>, <code className="font-mono">media_rename_plan</code>, <code className="font-mono">ops_undo</code>, and 17 tools to any MCP client — Claude Desktop, Cursor, and Codex work with one config block.</>,
+      }
+    : {
+        heading: <>给<span className="italic text-skype-deep">开发者</span>的工具链。</>,
+        introLead: "让 AI 帮你",
+        desc: <>BoxPlayer 把网盘自动化抽出成 <code className="font-mono text-skype-deep bg-sky-50 px-1.5 py-0.5 rounded text-[0.92em]">clouddrive-cli</code> —— 既是给开发者的命令行工具,也是给 Claude / Codex / Cursor / 任何 MCP Agent 的稳定 API。</>,
+        highlights: CLI_HIGHLIGHTS_ZH,
+        highlightsAria: "clouddrive-cli 亮点",
+        installCliDesc: "从 npm 全局安装,5 秒搞定",
+        installSkillDesc: "让 Claude / Codex 直接驱动 CLI",
+        actionTitle: "说人话,Agent 来跑命令。",
+        examples: AGENT_EXAMPLES_ZH,
+        mcpDesc: <>把 <code className="font-mono">files_walk</code>、<code className="font-mono">media_rename_plan</code>、<code className="font-mono">ops_undo</code> 等 17 个工具暴露给任何 MCP 客户端 — Claude Desktop、Cursor、Codex 一行配置即用。</>,
+      };
   return (
     <section
       id="cli"
@@ -70,21 +145,20 @@ export default function DeveloperCLI({ lang = "zh" }: { lang?: "en" | "zh" }) {
             id="cli-heading"
             className="font-display mt-6 sm:mt-7 text-[clamp(1.875rem,6vw,3.5rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
           >
-            让 AI 帮你{" "}
+            {t.introLead}{" "}
             {t.heading}
           </h2>
           <p className="mt-5 sm:mt-6 text-ink-500 text-base sm:text-lg leading-relaxed">
-            BoxPlayer 把网盘自动化抽出成 <code className="font-mono text-skype-deep bg-sky-50 px-1.5 py-0.5 rounded text-[0.92em]">clouddrive-cli</code> ——
-            既是给开发者的命令行工具,也是给 Claude / Codex / Cursor / 任何 MCP Agent 的稳定 API。
+            {t.desc}
           </p>
         </div>
 
         {/* CLI highlight cards */}
         <ul
           className="mt-10 sm:mt-14 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 list-none"
-          aria-label="clouddrive-cli 亮点"
+          aria-label={t.highlightsAria}
         >
-          {CLI_HIGHLIGHTS.map((h) => (
+          {t.highlights.map((h) => (
             <li key={h.title} className="card-soft p-5 sm:p-7">
               <div
                 className="w-10 h-10 rounded-xl bg-sky-50 ring-1 ring-sky-100 grid place-items-center text-skype-deep"
@@ -118,7 +192,7 @@ export default function DeveloperCLI({ lang = "zh" }: { lang?: "en" | "zh" }) {
                   Install the CLI
                 </h3>
                 <p className="text-xs sm:text-sm text-ink-500 mt-0.5">
-                  从 npm 全局安装,5 秒搞定
+                  {t.installCliDesc}
                 </p>
               </div>
             </header>
@@ -145,7 +219,7 @@ clouddrive-cli auth list --json`}</code>
                   Install the Claude Skill
                 </h3>
                 <p className="text-xs sm:text-sm text-ink-500 mt-0.5">
-                  让 Claude / Codex 直接驱动 CLI
+                  {t.installSkillDesc}
                 </p>
               </div>
             </header>
@@ -167,12 +241,12 @@ cp $(npm root -g)/clouddrive-cli/skill/SKILL.md \\
               AI Agent in action
             </span>
             <h3 className="font-display mt-3 text-[clamp(1.375rem,4.5vw,2.25rem)] leading-tight tracking-[-0.01em] text-ink-900 display-balance">
-              说人话,Agent 来跑命令。
+              {t.actionTitle}
             </h3>
           </div>
 
           <ul className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 list-none">
-            {AGENT_EXAMPLES.map((ex) => (
+            {t.examples.map((ex) => (
               <li
                 key={ex.prompt}
                 className="card-soft p-0 overflow-hidden flex flex-col min-w-0"
@@ -219,10 +293,7 @@ cp $(npm root -g)/clouddrive-cli/skill/SKILL.md \\
               <code className="font-mono text-skype-deep bg-sky-50 px-1.5 py-0.5 rounded text-[0.92em]">
                 clouddrive-mcp
               </code>{" "}
-              把 <code className="font-mono">files_walk</code>、
-              <code className="font-mono">media_rename_plan</code>、
-              <code className="font-mono">ops_undo</code> 等 17
-              个工具暴露给任何 MCP 客户端 — Claude Desktop、Cursor、Codex 一行配置即用。
+              {t.mcpDesc}
             </p>
           </div>
           <a

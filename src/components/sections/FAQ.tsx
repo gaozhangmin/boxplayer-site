@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const FAQS = [
+const FAQS_ZH = [
   {
     q: "BoxPlayer 是免费的吗?需要付费订阅吗?",
     a: "BoxPlayer 完全免费。Apple 平台(iOS、iPadOS、Apple TV、macOS)在 App Store 免费下载;Windows 与 Linux 桌面版本在 GitHub 完全开源,MIT 协议,没有付费墙、没有码率/分辨率限制,字幕和音轨随意切换。",
@@ -46,8 +46,63 @@ const FAQS = [
   },
 ];
 
+const FAQS_EN = [
+  {
+    q: "Is BoxPlayer free? Do I need a paid subscription?",
+    a: "BoxPlayer is free to use. The Apple apps for iOS, iPadOS, Apple TV, and macOS are free on the App Store. The Windows and Linux desktop clients are fully open source on GitHub under the MIT license, with no paywall, bitrate lock, resolution limit, subtitle lock, or audio-track restriction.",
+  },
+  {
+    q: "Which platforms does BoxPlayer support?",
+    a: "BoxPlayer supports iPhone, iPad, Apple TV 4K, MacBook, Mac mini, and iMac through the App Store. Windows 10/11 and major Linux distributions such as Ubuntu, Debian, Fedora, and Arch are available from GitHub Releases as .exe, AppImage, deb, and rpm packages. Sign in once to sync progress, libraries, and favorites across devices.",
+  },
+  {
+    q: "Can BoxPlayer be used as a Plex / Jellyfin / Emby client?",
+    a: "Yes. BoxPlayer implements native Plex, Jellyfin, and Emby media-server protocols, signs in directly, fetches libraries, metadata, posters, seasons, and watch progress, and works as a free open-source alternative to Infuse, VidHub, Kodi, and VLC.",
+  },
+  {
+    q: "Which cloud drives and network protocols are supported?",
+    a: "Chinese cloud drives include Aliyun Drive, Baidu Netdisk, 115, and PikPak. Global drives include OneDrive, Google Drive, Dropbox, and Box. Media servers include Plex, Jellyfin, Emby, and Kodi. NAS protocols include SMB, WebDAV, NFS, and FTP. Synology, QNAP, TrueNAS, unRAID, and self-hosted NFS shares can all be connected for direct playback.",
+  },
+  {
+    q: "Can BoxPlayer connect to self-hosted Plex / Jellyfin / Emby servers on Windows or Linux?",
+    a: "Yes. Whether your Plex, Jellyfin, or Emby server runs on Windows 10/11, Ubuntu, Debian, Fedora, Arch, Docker, Synology, QNAP, TrueNAS, or unRAID, BoxPlayer can sign in through native protocols and load libraries, poster walls, season groups, and watch progress.",
+  },
+  {
+    q: "Does BoxPlayer support self-hosted NFS video shares?",
+    a: "Yes. BoxPlayer includes an NFS client for Linux-hosted shares on Ubuntu, Debian, CentOS, or Arch, plus NFS exports from Synology, QNAP, TrueNAS, and unRAID. Add the server address, export path, and mount options in file sources to play 4K, HDR, and disc-rip files directly.",
+  },
+  {
+    q: "Does BoxPlayer support 4K HDR, Dolby Vision, Dolby Atmos, and disc images?",
+    a: "Yes. BoxPlayer supports 4K HDR10, HDR10+, Dolby Vision, Dolby Atmos, DTS-HD MA, TrueHD, ISO images, BDMV, VIDEO_TS, UHD Blu-ray, MKV, MP4, TS, M2TS, AV1, HEVC, H.265, and other mainstream formats. REMUX files can play at original bitrate.",
+  },
+  {
+    q: "Does BoxPlayer support external subtitles and multiple audio tracks?",
+    a: "Yes. BoxPlayer supports SRT, ASS, SSA, SUB, VTT, and PGS subtitles, can auto-load matching subtitle files, and lets you add subtitles manually. Multiple audio tracks can be switched freely.",
+  },
+  {
+    q: "How can AI help organize my cloud drive? What is clouddrive-cli?",
+    a: "clouddrive-cli is BoxPlayer's companion command-line tool and MCP server with a unified interface for seven major cloud drives. With Claude Code, Codex, Cursor, or another AI agent, you can describe a task in natural language and let the agent scan media libraries, generate Plex/Jellyfin-friendly rename plans, apply safe dry-runs, and undo mistakes. Install it with npm install -g clouddrive-cli.",
+  },
+  {
+    q: "How is BoxPlayer different from Infuse, VidHub, Kodi, VLC, and PotPlayer?",
+    a: "BoxPlayer combines free access, open-source Windows/Linux clients, Apple platform coverage, Plex / Jellyfin / Emby support, cloud-drive direct playback, and an AI Agent toolchain in one product. It is designed for users who care about high-quality playback and still want control over their media workflow.",
+  },
+];
+
 export default function FAQ({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { title: "{t.title}", badge: "FAQ" } : { title: "{t.title}", badge: "FAQ" };
+  const t = lang === "en"
+    ? {
+        title: "Frequently asked questions",
+        badge: "FAQ",
+        desc: "Answers about BoxPlayer's video player, Plex / Jellyfin / Emby client, cloud-drive streaming, 4K HDR support, and AI Agent media organization.",
+        faqs: FAQS_EN,
+      }
+    : {
+        title: "常见问题",
+        badge: "FAQ",
+        desc: "关于 BoxPlayer 视频播放器、Plex / Jellyfin / Emby 客户端、云盘直链、4K HDR、AI Agent 整理网盘的常见问题。",
+        faqs: FAQS_ZH,
+      };
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section
@@ -66,12 +121,12 @@ export default function FAQ({ lang = "zh" }: { lang?: "en" | "zh" }) {
             {t.title}
           </h2>
           <p className="mt-4 sm:mt-5 text-ink-500 text-base sm:text-lg leading-relaxed">
-            关于 BoxPlayer 视频播放器、Plex / Jellyfin / Emby 客户端、云盘直链、4K HDR、AI Agent 整理网盘的{t.title}。
+            {t.desc}
           </p>
         </div>
 
         <ul className="mt-10 sm:mt-12 space-y-3 list-none">
-          {FAQS.map((f, i) => {
+          {t.faqs.map((f, i) => {
             const expanded = open === i;
             return (
               <li key={f.q} className="card-soft overflow-hidden">

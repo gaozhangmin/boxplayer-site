@@ -1,59 +1,52 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { Loader2, CheckCircle } from "lucide-react";
-
-const SUPABASE_URL = "https://ltqipofjjqjlbbfsgihi.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0cWlwb2ZqanFqbGJiZnNnaWhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA0OTQxNjgsImV4cCI6MjA1NjA3MDE2OH0.g1vk-DaWbicHnSVZoGqskd0vOu-NuWtsDaMvFhe22mE";
+import { supabase } from "@/lib/supabase";
+import { normalizeAuthNextPath } from "@/lib/authRedirect.mjs";
 
 export default function AuthCallbackPage() {
   const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    let redirectTimer: number | undefined;
     async function handleCallback() {
+      const query = new URLSearchParams(window.location.search);
+      const nextPath = normalizeAuthNextPath(query.get("next"));
+      const isEn = nextPath.startsWith("/en/");
       try {
-        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        const hash = window.location.hash.substring(1);
-        const params = new URLSearchParams(hash);
-        const access_token = params.get("access_token");
-        const refresh_token = params.get("refresh_token");
-
-        if (!access_token) {
-          // Try query params (some OAuth flows use query)
-          const qp = new URLSearchParams(window.location.search);
-          const qt = qp.get("access_token") || qp.get("token");
-          if (!qt) throw new Error("No token found");
-          const { error } = await supabase.auth.setSession({
-            access_token: qt,
-            refresh_token: qp.get("refresh_token") || "",
-          });
+        const code = query.get("code");
+        if (code) {
+          const { error } = await supabase.auth.exchangeCodeForSession(code);
           if (error) throw error;
         } else {
-          const { error } = await supabase.auth.setSession({
-            access_token,
-            refresh_token: refresh_token || "",
-          });
-          if (error) throw error;
+          const hash = new URLSearchParams(window.location.hash.slice(1));
+          const accessToken = hash.get("access_token");
+          const refreshToken = hash.get("refresh_token");
+          if (accessToken) {
+            const { error } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken || "" });
+            if (error) throw error;
+          }
         }
 
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user?.email) {
-          localStorage.setItem("app_user_email", user.email);
-          localStorage.setItem("app_user_authed", "1");
-        }
+        const { data: { user }, error } = await supabase.auth.getUser();
+        if (error) throw error;
+        if (!user?.id) throw new Error(isEn ? "No authenticated session was found." : "未找到有效登录会话。");
         setStatus("success");
-        setMessage("登录成功！正在跳转…");
-        setTimeout(() => {
-          window.location.href = "/#pricing";
+        setMessage(isEn ? "Signed in. Redirecting…" : "登录成功，正在跳转…");
+        redirectTimer = window.setTimeout(() => {
+          window.location.replace(nextPath);
         }, 1500);
-      } catch (e: any) {
+      } catch (callbackError) {
         setStatus("error");
-        setMessage(e?.message || "登录失败");
+        setMessage(callbackError instanceof Error ? callbackError.message : (isEn ? "Sign-in failed." : "登录失败。"));
       }
     }
-    handleCallback();
+    void handleCallback();
+    return () => {
+      if (redirectTimer) window.clearTimeout(redirectTimer);
+    };
   }, []);
 
   return (
@@ -62,7 +55,7 @@ export default function AuthCallbackPage() {
         {status === "loading" && (
           <>
             <Loader2 className="w-8 h-8 mx-auto text-skype-deep animate-spin" />
-            <p className="mt-4 text-ink-600">正在登录…</p>
+            <p className="mt-4 text-ink-600">Signing in / 正在登录…</p>
           </>
         )}
         {status === "success" && (

@@ -9,7 +9,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:creem": "node --test functions/_shared/creem.test.mjs",
+    "test:auth": "node --test src/lib/authRedirect.test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",

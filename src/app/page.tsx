@@ -17,13 +17,13 @@ export default function Home() {
         <Hero lang="zh" />
         <Features lang="zh" />
         <Showcase lang="zh" />
-        <Sources />
-        <OpenSource />
-        <DeveloperCLI />
+        <Sources lang="zh" />
+        <OpenSource lang="zh" />
+        <DeveloperCLI lang="zh" />
         <Download lang="zh" />
-        <FAQ />
+        <FAQ lang="zh" />
       </main>
-      <SiteFooter />
+      <SiteFooter lang="zh" />
     </>
   );
 }

@@ -24,7 +24,6 @@ const OLD_FEATURES_EN = [
   { icon: Cloud, title: "Cloud-direct streaming", body: "Aliyun Drive, Baidu Netdisk, OneDrive, Google Drive, Dropbox, 115, PikPak — no download, 4K instant playback with smart caching. Stop downloading before watching." },
   { icon: Sparkles, title: "True 4K HDR · Dolby Vision · UHD BD", body: "ISO, BDMV, VIDEO_TS, Dolby Vision, HDR10+, Dolby Atmos, DTS-HD MA, TrueHD — all supported. REMUX files play at original bitrate." },
   { icon: Layers, title: "Smart media library · Poster wall scraper", body: "Auto-organized poster wall, movie/TV/anime recognition, TMDB metadata, external subtitle matching — your drive becomes Netflix." },
-  { icon: Search, title: "Global Search · Local + Web", body: "Search across all cloud drives and media servers in one click. File names, folders, metadata all covered. Find and save share links directly." },
   { icon: Repeat, title: "Across every screen", body: "iPhone, iPad, Apple TV 4K, MacBook, Windows, Linux desktop — one account, progress synced everywhere." },
   { icon: Shield, title: "NAS · NFS · Local first", body: "Synology, QNAP, TrueNAS, unRAID plug-and-play. NFS, SMB, WebDAV, FTP — one-click mount. Your files, your network, your private cinema." },
 ];

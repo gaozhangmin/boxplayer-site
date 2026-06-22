@@ -38,13 +38,13 @@ export default function HomeEn() {
         <Features lang="en" />
         <PricingSection lang="en" />
         <Showcase lang="en" />
-        <Sources />
-        <OpenSource />
-        <DeveloperCLI />
+        <Sources lang="en" />
+        <OpenSource lang="en" />
+        <DeveloperCLI lang="en" />
         <Download lang="en" />
-        <FAQ />
+        <FAQ lang="en" />
       </main>
-      <SiteFooter />
+      <SiteFooter lang="en" />
     </>
   );
 }

@@ -5,7 +5,30 @@ import { GithubIcon } from "@/components/icons/GithubIcon";
 const GITHUB_REPO = "https://github.com/gaozhangmin/boxplayer";
 
 export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { rights: "All rights reserved.", privacy: "Privacy Policy", terms: "Terms of Service" } : { rights: "保留所有权利。", privacy: "隐私政策", terms: "服务条款" };
+  const isEn = lang === "en";
+  const t = isEn
+    ? {
+        nav: "Footer navigation",
+        features: "Features",
+        pricing: "Pricing",
+        openSource: "Open source",
+        download: "Download",
+        privacy: "Privacy Policy",
+        terms: "Terms of Service",
+      }
+    : {
+        nav: "底部导航",
+        features: "功能",
+        pricing: "价格",
+        openSource: "开源",
+        download: "下载",
+        privacy: "隐私政策",
+        terms: "使用条款",
+      };
+  const homePrefix = isEn ? "/en/" : "/";
+  const pricingHref = isEn ? "/en/pricing" : "/pricing";
+  const privacyHref = isEn ? "/en/privacy" : "/privacy";
+  const termsHref = isEn ? "/en/terms" : "/terms";
   return (
     <footer
       role="contentinfo"
@@ -31,23 +54,23 @@ export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
         </div>
 
         <nav
-          aria-label="底部导航"
+          aria-label={t.nav}
           className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-500"
         >
-          <a href="#features" className="hover:text-skype-deep transition">
-            Features
+          <a href={`${homePrefix}#features`} className="hover:text-skype-deep transition">
+            {t.features}
           </a>
-          <Link href="/pricing" className="hover:text-skype-deep transition">
-            Pricing
+          <Link href={pricingHref} className="hover:text-skype-deep transition">
+            {t.pricing}
           </Link>
-          <a href="#opensource" className="hover:text-skype-deep transition">
-            Open source
+          <a href={`${homePrefix}#opensource`} className="hover:text-skype-deep transition">
+            {t.openSource}
           </a>
-          <a href="#cli" className="hover:text-skype-deep transition">
+          <a href={`${homePrefix}#cli`} className="hover:text-skype-deep transition">
             CLI
           </a>
-          <a href="#download" className="hover:text-skype-deep transition">
-            Download
+          <a href={`${homePrefix}#download`} className="hover:text-skype-deep transition">
+            {t.download}
           </a>
           <a
             href={GITHUB_REPO}
@@ -59,18 +82,18 @@ export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
             GitHub
           </a>
           <Link
-            href="/privacy"
+            href={privacyHref}
             className="hover:text-skype-deep transition"
             rel="nofollow"
           >
-            隐私政策
+            {t.privacy}
           </Link>
           <Link
-            href="/terms"
+            href={termsHref}
             className="hover:text-skype-deep transition"
             rel="nofollow"
           >
-            使用条款
+            {t.terms}
           </Link>
         </nav>
       </div>

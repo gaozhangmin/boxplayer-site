@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const SOURCES = [
+const SOURCES_ZH = [
   { src: "/images/icons/icon_aliyun.svg", name: "阿里云盘", alt: "阿里云盘 logo" },
   { src: "/images/icons/icon_baidu.svg", name: "百度网盘", alt: "百度网盘 logo" },
   { src: "/images/icons/icon_googledrive.svg", name: "Google Drive", alt: "Google Drive logo" },
@@ -15,8 +15,37 @@ const SOURCES = [
   { src: "/images/icons/icon_ftp.svg", name: "FTP", alt: "FTP / SFTP 协议 logo" },
 ];
 
+const SOURCES_EN = [
+  { src: "/images/icons/icon_aliyun.svg", name: "Aliyun Drive", alt: "Aliyun Drive logo" },
+  { src: "/images/icons/icon_baidu.svg", name: "Baidu Netdisk", alt: "Baidu Netdisk logo" },
+  { src: "/images/icons/icon_googledrive.svg", name: "Google Drive", alt: "Google Drive logo" },
+  { src: "/images/icons/icon_onedrive.svg", name: "OneDrive", alt: "Microsoft OneDrive logo" },
+  { src: "/images/icons/icon_dropbox.svg", name: "Dropbox", alt: "Dropbox logo" },
+  { src: "/images/icons/plex.svg", name: "Plex", alt: "Plex media server logo" },
+  { src: "/images/icons/jellyfin-icon-transparent.svg", name: "Jellyfin", alt: "Jellyfin media server logo" },
+  { src: "/images/icons/icon_emby.svg", name: "Emby", alt: "Emby media server logo" },
+  { src: "/images/icons/icon_smb.svg", name: "SMB", alt: "SMB network sharing protocol logo" },
+  { src: "/images/icons/icon_dav.svg", name: "WebDAV", alt: "WebDAV protocol logo" },
+  { src: "/images/icons/icon_nfs.svg", name: "NFS", alt: "NFS network file system logo" },
+  { src: "/images/icons/icon_ftp.svg", name: "FTP", alt: "FTP / SFTP protocol logo" },
+];
+
 export default function Sources({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { badge: "Sources" } : { badge: "数据源" };
+  const t = lang === "en"
+    ? {
+        eyebrow: "Plays everything from anywhere",
+        heading: <>Your sources.{" "}<span className="italic text-skype-deep">All of them.</span></>,
+        desc: "Media servers (Plex, Jellyfin, Emby, Kodi on Windows, Linux, Docker, Synology, QNAP, TrueNAS, or unRAID), NAS and network protocols (SMB, WebDAV, NFS, FTP), Chinese cloud drives (Aliyun Drive, Baidu Netdisk, 115, PikPak), and global cloud drives (OneDrive, Google Drive, Dropbox, Box) — one BoxPlayer connects them all.",
+        sources: SOURCES_EN,
+        aria: "Supported video sources, media servers, and NAS protocols",
+      }
+    : {
+        eyebrow: "Plays everything from anywhere",
+        heading: <>Your sources.{" "}<span className="italic text-skype-deep">All of them.</span></>,
+        desc: "媒体服务器(Plex、Jellyfin、Emby、Kodi —— 跑在 Windows / Linux / Docker / 群晖 / 威联通 / TrueNAS / unRAID 上都行)、NAS 与网络协议(SMB、WebDAV、NFS、FTP,自建 NFS 共享一键挂载)、国内云盘(阿里云盘、百度网盘、115 网盘、PikPak)、海外云盘(OneDrive、Google Drive、Dropbox、Box) —— 一台 BoxPlayer,全部打通。",
+        sources: SOURCES_ZH,
+        aria: "支持的视频源、媒体服务器与 NAS 协议",
+      };
   return (
     <section
       id="sources"
@@ -26,28 +55,24 @@ export default function Sources({ lang = "zh" }: { lang?: "en" | "zh" }) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="text-center max-w-3xl mx-auto">
           <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">
-            Plays everything from anywhere
+            {t.eyebrow}
           </span>
           <h2
             id="sources-heading"
             className="font-display mt-3 sm:mt-4 text-[clamp(1.75rem,6vw,3.25rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
           >
-            Your sources.{" "}
-            <span className="italic text-skype-deep">All of them.</span>
+            {t.heading}
           </h2>
           <p className="mt-4 sm:mt-5 text-ink-500 text-base sm:text-lg leading-relaxed">
-            媒体服务器(Plex、Jellyfin、Emby、Kodi —— 跑在 Windows / Linux / Docker / 群晖 / 威联通 / TrueNAS / unRAID 上都行)、
-            NAS 与网络协议(SMB、WebDAV、NFS、FTP,自建 NFS 共享一键挂载)、
-            国内云盘(阿里云盘、百度网盘、115 网盘、PikPak)、海外云盘(OneDrive、Google Drive、Dropbox、Box)
-            —— 一台 BoxPlayer,全部打通。
+            {t.desc}
           </p>
         </div>
 
         <ul
           className="mt-10 sm:mt-14 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 list-none"
-          aria-label="支持的视频源、媒体服务器与 NAS 协议"
+          aria-label={t.aria}
         >
-          {SOURCES.map((s) => (
+          {t.sources.map((s) => (
             <li
               key={s.name}
               className="card-soft px-3 py-4 sm:px-5 sm:py-6 flex flex-col items-center gap-2 sm:gap-3 hover:-translate-y-0.5 transition"

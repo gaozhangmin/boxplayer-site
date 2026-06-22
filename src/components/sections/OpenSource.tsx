@@ -4,7 +4,7 @@ import { GithubIcon } from "@/components/icons/GithubIcon";
 const GITHUB_REPO = "https://github.com/gaozhangmin/boxplayer";
 const GITHUB_RELEASE = "https://github.com/gaozhangmin/boxplayer/releases/latest";
 
-const HIGHLIGHTS = [
+const HIGHLIGHTS_ZH = [
   {
     icon: Code2,
     title: "源码完全开放",
@@ -22,8 +22,44 @@ const HIGHLIGHTS = [
   },
 ];
 
+const HIGHLIGHTS_EN = [
+  {
+    icon: Code2,
+    title: "Fully open source",
+    body: "The Windows and Linux clients are 100% open on GitHub: source code, build scripts, and release binaries are public for auditing, self-hosting, and development.",
+  },
+  {
+    icon: Heart,
+    title: "Free forever, no paywall",
+    body: "No trial limits, no bitrate locks, no reduced audio tracks. HDR, Dolby Vision, UHD discs, and Plex/Jellyfin/Emby connections are all free.",
+  },
+  {
+    icon: Scale,
+    title: "MIT-friendly license",
+    body: "Read it, change it, fork it, and build your own player from it. We want more people to enjoy high-quality playback on every screen.",
+  },
+];
+
 export default function OpenSource({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { badge: "Open Source", heading: <>Free and <span className="italic text-skype-deep">open source</span> forever.</>, desc: "MIT licensed. No tracking, no ads, no data collection. Your library stays yours.", github: "View on GitHub" } : { badge: "开源", heading: <>永久<span className="italic text-skype-deep">免费开源</span>。</>, desc: "MIT 协议开源。无追踪、无广告、不收集数据。你的资料库永远属于你。", github: "GitHub 开源主页" };
+  const t = lang === "en"
+    ? {
+        badge: "Open Source",
+        heading: <>Free and <span className="italic text-skype-deep">open source</span> forever.</>,
+        desc: "Most cross-platform players either charge, stay closed-source, or skip Linux. BoxPlayer is MIT licensed, has no tracking, no ads, and does not collect viewing data. Your library stays yours, and one codebase can be built, audited, modified, and distributed by anyone.",
+        github: "View on GitHub",
+        release: "Download release",
+        highlights: HIGHLIGHTS_EN,
+        highlightsAria: "Open-source highlights",
+      }
+    : {
+        badge: "开源",
+        heading: <>永久<span className="italic text-skype-deep">免费开源</span>。</>,
+        desc: "市面上跨平台播放器要么收钱、要么闭源、要么砍 Linux。MIT 协议开源。无追踪、无广告、不收集数据。你的资料库永远属于你。一份代码,所有人都能编译、审计、修改、分发。",
+        github: "GitHub 开源主页",
+        release: "下载 Release",
+        highlights: HIGHLIGHTS_ZH,
+        highlightsAria: "开源亮点",
+      };
   return (
     <section
       id="opensource"
@@ -49,9 +85,7 @@ export default function OpenSource({ lang = "zh" }: { lang?: "en" | "zh" }) {
               {t.heading}
             </h2>
             <p className="mt-5 sm:mt-6 text-ink-500 text-base sm:text-lg leading-relaxed max-w-xl">
-              市面上跨平台播放器要么收钱、要么闭源、要么砍 Linux。
               {t.desc}
-              的 — 一份代码,所有人都能编译、审计、修改、分发。
             </p>
 
             <div className="mt-7 sm:mt-8 flex flex-wrap gap-3">
@@ -63,7 +97,7 @@ export default function OpenSource({ lang = "zh" }: { lang?: "en" | "zh" }) {
                 aria-label="View BoxPlayer on GitHub"
               >
                 <GithubIcon className="w-4 h-4" />
-                View on GitHub
+                {t.github}
               </a>
               <a
                 href={GITHUB_RELEASE}
@@ -72,7 +106,7 @@ export default function OpenSource({ lang = "zh" }: { lang?: "en" | "zh" }) {
                 className="btn-ghost text-sm border border-ink-100"
               >
                 <Star className="w-4 h-4" aria-hidden />
-                Download release
+                {t.release}
               </a>
             </div>
 
@@ -147,8 +181,8 @@ export default function OpenSource({ lang = "zh" }: { lang?: "en" | "zh" }) {
           </div>
 
           {/* Right: feature cards */}
-          <ul className="space-y-4 list-none min-w-0" aria-label="开源亮点">
-            {HIGHLIGHTS.map((h) => (
+          <ul className="space-y-4 list-none min-w-0" aria-label={t.highlightsAria}>
+            {t.highlights.map((h) => (
               <li
                 key={h.title}
                 className="card-soft p-5 sm:p-7 hover:-translate-y-0.5 transition"

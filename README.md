@@ -36,6 +36,36 @@ In the Cloudflare Pages dashboard:
 
 Push to your branch and Cloudflare auto-deploys.
 
+## Creem payments
+
+The site uses Cloudflare Pages Functions for hosted checkout, webhook processing, and subscription status. Apply `supabase/migrations/20260622000000_create_app_subscriptions.sql`, then configure these Pages environment variables:
+
+- `CREEM_API_KEY`
+- `CREEM_WEBHOOK_SECRET`
+- `SUPABASE_URL`
+- `SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `SITE_URL` (for example `https://xbysite.pages.dev`)
+- `CREEM_PRODUCT_ID` (optional override; defaults to the lifetime product configured in the server function)
+
+Configure the Creem webhook URL as `https://<site-domain>/api/creem/webhook`. Start in Creem test mode, then run the focused integration logic tests with:
+
+```bash
+npm run test:creem
+```
+
+## Website authentication
+
+The website and desktop app must use the same Supabase project URL and the same public anon/publishable key. The public values in `src/lib/supabase.ts` match the desktop app's `src/config.ts`; Cloudflare's `SUPABASE_URL` and `SUPABASE_ANON_KEY` must point to that same project.
+
+In Supabase Authentication settings:
+
+- Enable GitHub and Google providers used by the desktop app.
+- Keep email OTP enabled and ensure the email template includes the verification token used by the six-digit code flow.
+- Add `https://xbysite.pages.dev/auth/callback/` to the redirect allow list. Add preview callback URLs explicitly before testing OAuth on preview deployments.
+
+The website uses only the public key. Supabase secret/service-role keys remain in Cloudflare Pages Functions and must never be added to browser code.
+
 ## Project structure
 
 ```

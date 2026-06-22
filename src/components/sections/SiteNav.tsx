@@ -5,24 +5,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import AccountControl from "@/components/auth/AccountControl";
 
 
 
 const NAV_ZH = [
-  { href: "#features", label: "功能" }, { href: "#pricing", label: "价格" },
+  { href: "#features", label: "功能" }, { href: "/pricing/", label: "价格", absolute: true },
   { href: "#opensource", label: "开源" }, { href: "#cli", label: "CLI · Agent" },
   { href: "#faq", label: "FAQ" }, { href: "#download", label: "下载" },
 ];
 const NAV_EN = [
-  { href: "#features", label: "Features" }, { href: "#pricing", label: "Pricing" },
+  { href: "#features", label: "Features" }, { href: "/en/pricing/", label: "Pricing", absolute: true },
   { href: "#opensource", label: "Open Source" }, { href: "#cli", label: "CLI · Agent" },
   { href: "#faq", label: "FAQ" }, { href: "#download", label: "Download" },
 ];
 export default function SiteNav({ lang = "zh" }: { lang?: "en" | "zh" }) {
   const NAV = lang === "en" ? NAV_EN : NAV_ZH;
-  const homeLabel = lang === "en" ? "Home" : "首页";
-  const langSwitch = lang === "en" ? { href: "/", label: "中文" } : { href: "/en", label: "English" };
-
   const [open, setOpen] = useState(false);
   const pathname = usePathname() || "/";
   const isEn = pathname.startsWith("/en");
@@ -31,6 +29,24 @@ export default function SiteNav({ lang = "zh" }: { lang?: "en" | "zh" }) {
     ? pathname.replace(/^\/en/, "") || "/"
     : `/en${pathname === "/" ? "" : pathname}`;
   const langLabel = isEn ? "中文" : "EN";
+  const homeHref = isEn ? "/en" : "/";
+  const homePrefix = isEn ? "/en/" : "/";
+  const downloadHref = isEn ? "/en/#download" : "/#download";
+  const labels = isEn
+    ? {
+        mainNav: "Main navigation",
+        home: "BoxPlayer home",
+        download: "Get BoxPlayer — jump to download section",
+        menuOpen: "Open menu",
+        menuClose: "Close menu",
+      }
+    : {
+        mainNav: "主导航",
+        home: "BoxPlayer 首页",
+        download: "Get BoxPlayer — 跳转到下载区域",
+        menuOpen: "打开菜单",
+        menuClose: "关闭菜单",
+      };
 
   return (
     <header
@@ -38,12 +54,12 @@ export default function SiteNav({ lang = "zh" }: { lang?: "en" | "zh" }) {
       className="sticky top-0 z-50 backdrop-blur-md bg-paper/80 border-b border-ink-100/60"
     >
       <nav
-        aria-label="主导航"
+        aria-label={labels.mainNav}
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 h-14 sm:h-16 flex items-center justify-between"
       >
         <Link
-          href="/"
-          aria-label="BoxPlayer 首页"
+          href={homeHref}
+          aria-label={labels.home}
           className="flex items-center gap-2 sm:gap-2.5"
         >
           <div
@@ -66,12 +82,13 @@ export default function SiteNav({ lang = "zh" }: { lang?: "en" | "zh" }) {
         <ul className="hidden md:flex items-center gap-1 text-sm list-none">
           {NAV.map((n) => (
             <li key={n.href}>
-              <Link href={n.href} className="btn-ghost text-sm">{n.label}</Link>
+              <Link href={n.absolute ? n.href : `${homePrefix}${n.href}`} className="btn-ghost text-sm">{n.label}</Link>
             </li>
           ))}
         </ul>
 
         <div className="flex items-center gap-2">
+          <div className="hidden sm:block"><AccountControl lang={lang} /></div>
           <Link
             href={otherHref}
             hrefLang={isEn ? "zh-CN" : "en-US"}
@@ -81,15 +98,15 @@ export default function SiteNav({ lang = "zh" }: { lang?: "en" | "zh" }) {
             {langLabel}
           </Link>
           <Link
-            href="/#download"
+            href={downloadHref}
             className="btn-primary text-xs sm:text-sm px-3 sm:px-6 py-2 sm:py-3"
-            aria-label="Get BoxPlayer — 跳转到下载区域"
+            aria-label={labels.download}
           >
             Get BoxPlayer
           </Link>
           <button
             type="button"
-            aria-label={open ? "关闭菜单" : "打开菜单"}
+            aria-label={open ? labels.menuClose : labels.menuOpen}
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
@@ -113,7 +130,7 @@ export default function SiteNav({ lang = "zh" }: { lang?: "en" | "zh" }) {
             {NAV.map((n) => (
               <li key={n.href}>
                 <Link
-                  href={n.href}
+                  href={n.absolute ? n.href : `${homePrefix}${n.href}`}
                   onClick={() => setOpen(false)}
                   className="block px-3 py-2.5 rounded-lg text-ink-700 font-medium hover:bg-sky-50 hover:text-skype-deep transition"
                 >
@@ -122,6 +139,9 @@ export default function SiteNav({ lang = "zh" }: { lang?: "en" | "zh" }) {
               </li>
             ))}
             <li className="mt-1 pt-2 border-t border-ink-100">
+              <AccountControl lang={lang} fullWidth />
+            </li>
+            <li>
               <Link
                 href={otherHref}
                 hrefLang={isEn ? "zh-CN" : "en-US"}

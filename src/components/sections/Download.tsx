@@ -5,7 +5,7 @@ const APP_STORE_URL = "https://apps.apple.com/us/app/boxplayer/id6739804060";
 const GITHUB_RELEASE_URL =
   "https://github.com/gaozhangmin/boxplayer/releases/latest";
 
-const PLATFORMS = [
+const PLATFORMS_ZH = [
   {
     icon: Apple,
     name: "iOS · iPadOS",
@@ -56,8 +56,75 @@ const PLATFORMS = [
   },
 ];
 
+const PLATFORMS_EN = [
+  {
+    icon: Apple,
+    name: "iOS · iPadOS",
+    desc: "Available on the App Store",
+    href: APP_STORE_URL,
+    cta: "App Store",
+    accent: "store",
+  },
+  {
+    icon: Tv,
+    name: "Apple TV",
+    desc: "Native tvOS experience for the living room",
+    href: APP_STORE_URL,
+    cta: "App Store",
+    accent: "store",
+  },
+  {
+    icon: Monitor,
+    name: "macOS",
+    desc: "Native Apple Silicon performance",
+    href: APP_STORE_URL,
+    cta: "Mac App Store",
+    accent: "store",
+  },
+  {
+    icon: GithubIcon,
+    name: "Windows",
+    desc: "Free open source · GitHub Release",
+    href: GITHUB_RELEASE_URL,
+    cta: "GitHub Release",
+    accent: "github",
+  },
+  {
+    icon: GithubIcon,
+    name: "Linux",
+    desc: "Free open source · AppImage / deb / rpm",
+    href: GITHUB_RELEASE_URL,
+    cta: "GitHub Release",
+    accent: "github",
+  },
+  {
+    icon: Smartphone,
+    name: "Android",
+    desc: "Google Play and APK · Coming soon",
+    href: undefined,
+    cta: "Coming soon",
+    accent: "muted",
+  },
+];
+
 export default function Download({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { heading: "Download BoxPlayer", badge: "Download", descFree: "{t.descFree}", appStore: "App Store", github: "GitHub" } : { heading: "下载 BoxPlayer", badge: "下载", descFree: "{t.descFree}", appStore: "App Store 下载", github: "GitHub 下载" };
+  const t = lang === "en"
+    ? {
+        eyebrow: "Free during preview",
+        heading: <>Get BoxPlayer on{" "}<span className="italic text-skype-deep">every screen.</span></>,
+        desc: "Download BoxPlayer for iPhone, iPad, Apple TV, macOS, Windows, and Linux. Android support is coming soon.",
+        platforms: PLATFORMS_EN,
+        platformsAria: "BoxPlayer supported download platforms",
+        footnote: "App Store requires iOS 16+ / iPadOS 16+ / tvOS 16+ / macOS 13+. Windows 10+ and major Linux distributions are available from GitHub Releases.",
+      }
+    : {
+        eyebrow: "Free during preview",
+        heading: <>Get BoxPlayer on{" "}<span className="italic text-skype-deep">every screen.</span></>,
+        desc: "下载 iPhone、iPad、Apple TV、macOS、Windows 和 Linux 版本。Android 版本即将推出。",
+        platforms: PLATFORMS_ZH,
+        platformsAria: "BoxPlayer 支持的下载平台",
+        footnote: "App Store 适用于 iOS 16+ / iPadOS 16+ / tvOS 16+ / macOS 13+ · Windows 10+ 与主流 Linux 发行版从 GitHub Release 获取。",
+      };
   return (
     <section
       id="download"
@@ -67,24 +134,23 @@ export default function Download({ lang = "zh" }: { lang?: "en" | "zh" }) {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
         <div className="card-soft ring-soft px-5 py-10 sm:px-8 sm:py-14 md:px-16 md:py-20 text-center">
           <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">
-            Free during preview
+            {t.eyebrow}
           </span>
           <h2
             id="download-heading"
             className="font-display mt-3 sm:mt-4 text-[clamp(1.875rem,7vw,3.75rem)] leading-[1.1] tracking-[-0.02em] text-ink-900 display-balance"
           >
-            Get BoxPlayer on{" "}
-            <span className="italic text-skype-deep">every screen.</span>
+            {t.heading}
           </h2>
           <p className="mt-4 sm:mt-5 max-w-xl mx-auto text-ink-500 text-base sm:text-lg leading-relaxed">
-            {t.descFree}
+            {t.desc}
           </p>
 
           <ul
             className="mt-10 sm:mt-12 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3"
-            aria-label="BoxPlayer 支持的下载平台"
+            aria-label={t.platformsAria}
           >
-            {PLATFORMS.map((p) => {
+            {t.platforms.map((p) => {
               const inner = (
                 <>
                   <div
@@ -138,8 +204,7 @@ export default function Download({ lang = "zh" }: { lang?: "en" | "zh" }) {
           </ul>
 
           <p className="mt-6 sm:mt-8 text-xs text-ink-500 leading-relaxed">
-            App Store 适用于 iOS 16+ / iPadOS 16+ / tvOS 16+ / macOS 13+ ·
-            Windows 10+ 与主流 Linux 发行版从 GitHub Release 获取。
+            {t.footnote}
           </p>
         </div>
       </div>
