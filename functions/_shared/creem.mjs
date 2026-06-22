@@ -116,7 +116,7 @@ export async function supabaseAdminFetch(env, path, init = {}) {
 }
 
 export function extractCreemRecord(event) {
-  const object = event?.object || {}
+  const object = event?.object || event?.data?.object || {}
   const customer = object.customer || object.customerObject || {}
   const subscription = object.subscription || object.subscriptionObject || object
   const metadata = object.metadata || subscription.metadata || object.checkout?.metadata || {}
@@ -134,6 +134,11 @@ export function extractCreemRecord(event) {
 
 export async function upsertSubscription(env, event, isPro) {
   const record = extractCreemRecord(event)
+  console.log('[upsert] event keys:', Object.keys(event))
+  console.log('[upsert] event.object keys:', event?.object ? Object.keys(event.object) : 'no object')
+  console.log('[upsert] event.object.metadata:', JSON.stringify(event?.object?.metadata))
+  console.log('[upsert] event.object.customer?.metadata:', JSON.stringify(event?.object?.customer?.metadata))
+  console.log('[upsert] extracted record:', JSON.stringify({ ...record, userId: !!record.userId }))
   if (!record.userId) throw new Error('missing_reference_id')
 
   const body = {

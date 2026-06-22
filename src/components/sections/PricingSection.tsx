@@ -135,7 +135,7 @@ const I18N = {
 
 export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) {
   const paymentStatus = usePaymentStatus();
-  const { session, openLogin, refreshSubscription } = useAuth();
+  const { session, openLogin, refreshSubscription, subscription } = useAuth();
   const t = I18N[lang];
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
@@ -143,9 +143,18 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
   const price = t.proPrice;
   const source = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("source") === "app" ? "app" : "web";
 
+  const showActivating = paymentStatus === "success" && subscription !== "pro";
+  const showActivated = paymentStatus === "success" && subscription === "pro";
+
   useEffect(() => {
     if (paymentStatus === "success") void refreshSubscription();
   }, [paymentStatus, refreshSubscription]);
+
+  useEffect(() => {
+    if (!showActivating || !session?.access_token) return;
+    const interval = setInterval(() => void refreshSubscription(), 3000);
+    return () => clearInterval(interval);
+  }, [showActivating, session, refreshSubscription]);
 
   async function handleCheckout() {
     setCheckoutError("");
@@ -172,7 +181,15 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
 
   return (
     <div id="pricing" aria-labelledby="pricing-heading" className="relative py-16 sm:py-24 md:py-32 bg-sky-50/30">
-      {paymentStatus === "success" && (
+      {paymentStatus === "success" && showActivated && (
+        <div className="mx-auto max-w-4xl px-4 mb-8">
+          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 flex items-center gap-4">
+            <CheckCircle className="w-8 h-8 text-emerald-500 flex-shrink-0" />
+            <div><p className="text-lg font-semibold text-emerald-800">Pro 已激活！</p><p className="text-sm text-emerald-600">已拥有全部专业版功能，可以关闭此页面了。</p></div>
+          </div>
+        </div>
+      )}
+      {paymentStatus === "success" && showActivating && (
         <div className="mx-auto max-w-4xl px-4 mb-8">
           <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 flex items-center gap-4">
             <CheckCircle className="w-8 h-8 text-emerald-500 flex-shrink-0" />
