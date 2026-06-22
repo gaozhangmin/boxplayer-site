@@ -52,7 +52,7 @@ const AGENT_EXAMPLES = [
 ];
 
 export default function DeveloperCLI({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { badge: "CLI · Agent" } : { badge: "CLI · Agent" };
+  const t = lang === "en" ? { badge: "CLI · Agent", heading: <>Developer tools for <span className="italic text-skype-deep">power users</span>.</> } : { badge: "CLI · Agent", heading: <>给<span className="italic text-skype-deep">开发者</span>的工具链。</> };
   return (
     <section
       id="cli"
