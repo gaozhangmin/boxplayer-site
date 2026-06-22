@@ -57,7 +57,7 @@ const PLATFORMS = [
 ];
 
 export default function Download({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { mac: "macOS", ios: "iOS · iPadOS", atv: "Apple TV", windows: "Windows", linux: "Linux", android: "Android", heading: "Download BoxPlayer", appStore: "App Store", github: "GitHub", badge: "Download", desc: "Free · Open Source", descFree: "Free · All platforms" } : { mac: "macOS", ios: "iOS · iPadOS", atv: "Apple TV", windows: "Windows", linux: "Linux", android: "Android", heading: "下载 BoxPlayer", appStore: "App Store 下载", github: "GitHub 下载", badge: "下载", desc: "免费开源", descFree: "目前免费 · 全平台可用" };
+  const t = lang === "en" ? { heading: "Download BoxPlayer", badge: "Download", descFree: "Free · All platforms", appStore: "App Store", github: "GitHub" } : { heading: "下载 BoxPlayer", badge: "下载", descFree: "目前免费 · 全平台可用", appStore: "App Store 下载", github: "GitHub 下载" };
   return (
     <section
       id="download"
@@ -77,8 +77,7 @@ export default function Download({ lang = "zh" }: { lang?: "en" | "zh" }) {
             <span className="italic text-skype-deep">every screen.</span>
           </h2>
           <p className="mt-4 sm:mt-5 max-w-xl mx-auto text-ink-500 text-base sm:text-lg leading-relaxed">
-            目前阶段完全免费。Apple 全家桶可在 App Store 直接下载,Windows
-            与 Linux 桌面端 100% 免费开源,GitHub 上获取最新构建。
+            {t.descFree}
           </p>
 
           <ul

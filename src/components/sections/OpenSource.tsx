@@ -23,7 +23,7 @@ const HIGHLIGHTS = [
 ];
 
 export default function OpenSource({ lang = "zh" }: { lang?: "en" | "zh" }) {
-  const t = lang === "en" ? { badge: "Open Source", heading: <>Free and <span className="italic text-skype-deep">open source</span> forever.</>, desc: "MIT licensed. No tracking, no ads, no data collection. Your library stays yours.", github: "View on GitHub" } : { badge: "开源", heading: <>永久<span className="italic text-skype-deep">免费开源</span>。</>, desc: "MIT 协议开源。无追踪、无广告、不收集数据。你的资料库永远属于你。", github: "GitHub 开源主页" };
+  const t = lang === "en" ? { badge: "Open Source", heading: <>Free and <span className="italic text-skype-deep">open source</span> forever.</>, desc: "MIT licensed. No tracking, no ads, no data collection. Your library stays yours.", github: "View on GitHub" } : { badge: "开源", heading: <>{t.heading}</>, desc: "{t.desc}你的资料库永远属于你。", github: "GitHub 开源主页" };
   return (
     <section
       id="opensource"
