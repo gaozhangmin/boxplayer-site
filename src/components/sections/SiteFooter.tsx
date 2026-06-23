@@ -15,6 +15,7 @@ export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
         download: "Download",
         privacy: "Privacy Policy",
         terms: "Terms of Service",
+        support: "Customer support",
       }
     : {
         nav: "底部导航",
@@ -24,6 +25,7 @@ export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
         download: "下载",
         privacy: "隐私政策",
         terms: "使用条款",
+        support: "客服邮箱",
       };
   const homePrefix = isEn ? "/en/" : "/";
   const pricingHref = isEn ? "/en/pricing" : "/pricing";
@@ -95,6 +97,12 @@ export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
           >
             {t.terms}
           </Link>
+          <a
+            href="mailto:gaozhangmin@gmail.com"
+            className="hover:text-skype-deep transition"
+          >
+            {t.support}
+          </a>
         </nav>
       </div>
     </footer>

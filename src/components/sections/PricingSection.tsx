@@ -32,6 +32,48 @@ const I18N = {
     title: <>Free forever. <span className="italic text-skype-deep">Pro when you need more.</span></>,
     desc: "Core file management, video playback, music, and local reading are always free. Upgrade to Pro for unlimited AI search, file organization, AI reading assistant, and more.",
     proPrice: { amount: "$199", unit: "", note: "One-time · lifetime access" },
+    monthly: {
+      name: "Monthly",
+      cycle: "monthly",
+      amount: "$2",
+      unit: "/mo",
+      note: "per month · billed monthly",
+      tagline: "Full Pro features with monthly flexibility.",
+      features: [
+        "Everything in Free, plus:",
+        "Unlimited AI Smart Search",
+        "Unlimited global web search",
+        "One-click save share links",
+        "AI File Organizer & dedup",
+        "AI Reading Companion (PDF/EPUB)",
+        "Text-to-Speech (5000 chars/day)",
+        "Instant Translation (5000 chars/day)",
+        "TMDB + Douban Movie Discovery",
+        "Priority support",
+      ],
+      cta: "Subscribe Monthly",
+    },
+    yearly: {
+      name: "Yearly",
+      cycle: "yearly",
+      amount: "$19",
+      unit: "/yr",
+      note: "per year · billed annually",
+      tagline: "Best value for long-term Pro users.",
+      features: [
+        "Everything in Free, plus:",
+        "Unlimited AI Smart Search",
+        "Unlimited global web search",
+        "One-click save share links",
+        "AI File Organizer & dedup",
+        "AI Reading Companion (PDF/EPUB)",
+        "Text-to-Speech (5000 chars/day)",
+        "Instant Translation (5000 chars/day)",
+        "TMDB + Douban Movie Discovery",
+        "Priority support",
+      ],
+      cta: "Subscribe Yearly",
+    },
     free: {
       name: "Free",
       cost: "$0",
@@ -84,6 +126,48 @@ const I18N = {
     title: <>永久免费。 <span className="italic text-skype-deep">专业版解锁更多。</span></>,
     desc: "基础文件管理、视频播放、音乐、本地阅读始终免费。升级 Pro 解锁无限 AI 搜索、文件整理、AI 阅读助手等高级功能。",
     proPrice: { amount: "$199", unit: "", note: "一次买断 · 终身使用" },
+    monthly: {
+      name: "包月",
+      cycle: "monthly",
+      amount: "$2",
+      unit: "/月",
+      note: "每月 · 按月订阅",
+      tagline: "灵活的按月订阅，随时可取消。",
+      features: [
+        "包含免费版全部功能，以及：",
+        "无限 AI 智能搜索",
+        "无限全网资源搜索",
+        "全网资源一键保存",
+        "AI 文件整理 & 查重",
+        "AI 阅读助手 (PDF/EPUB)",
+        "语音朗读 (5000字/天)",
+        "即时翻译 (5000字/天)",
+        "TMDB + 豆瓣电影发现",
+        "优先技术支持",
+      ],
+      cta: "按月订阅",
+    },
+    yearly: {
+      name: "包年",
+      cycle: "yearly",
+      amount: "$19",
+      unit: "/年",
+      note: "每年 · 按年订阅",
+      tagline: "长期使用的最佳选择。",
+      features: [
+        "包含免费版全部功能，以及：",
+        "无限 AI 智能搜索",
+        "无限全网资源搜索",
+        "全网资源一键保存",
+        "AI 文件整理 & 查重",
+        "AI 阅读助手 (PDF/EPUB)",
+        "语音朗读 (5000字/天)",
+        "即时翻译 (5000字/天)",
+        "TMDB + 豆瓣电影发现",
+        "优先技术支持",
+      ],
+      cta: "按年订阅",
+    },
     free: {
       name: "免费版",
       cost: "$0",
@@ -156,7 +240,7 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
     return () => clearInterval(interval);
   }, [showActivating, session, refreshSubscription]);
 
-  async function handleCheckout() {
+  async function handleCheckout(cycle: string) {
     setCheckoutError("");
     if (!session?.access_token) {
       openLogin(lang);
@@ -167,7 +251,7 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
       const resp = await fetch("/api/creem/checkout", {
         method: "POST",
         headers: { "content-type": "application/json", Authorization: `Bearer ${session.access_token}` },
-        body: JSON.stringify({ cycle: "lifetime", source }),
+        body: JSON.stringify({ cycle, source }),
       });
       const payload = await resp.json();
       if (!resp.ok || !payload.checkoutUrl) throw new Error(payload.error || "checkout_failed");
@@ -222,7 +306,7 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
         </div>
 
         {/* Plan cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-start">
           {/* Free card */}
           <div className="card-soft p-7 sm:p-8 flex flex-col">
             <h3 className="font-display text-2xl text-ink-900">{t.free.name}</h3>
@@ -243,7 +327,49 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
             </ul>
           </div>
 
-          {/* Pro card */}
+          {/* Monthly card */}
+          <div className="card-soft p-7 sm:p-8 flex flex-col">
+            <h3 className="font-display text-2xl text-ink-900">{t.monthly.name}</h3>
+            <div className="mt-3 flex items-baseline gap-1">
+              <span className="font-display text-5xl text-ink-900">{t.monthly.amount}</span>
+              {t.monthly.unit && <span className="text-lg text-ink-500 font-medium">{t.monthly.unit}</span>}
+            </div>
+            <p className="mt-2 text-sm text-ink-500 leading-relaxed min-h-[2.5rem]">{t.monthly.note}</p>
+            <button type="button" disabled={checkoutLoading} onClick={() => handleCheckout(t.monthly.cycle)} className="mt-5 inline-flex items-center justify-center gap-2 px-6 py-3 border border-ink-200 text-ink-700 rounded-xl font-semibold text-sm hover:border-skype-deep hover:text-skype-deep transition disabled:opacity-60">
+              {t.monthly.cta}
+            </button>
+            <ul className="mt-6 space-y-3 list-none">
+              {t.monthly.features.map((f, i) => (
+                <li key={f} className={`flex items-start gap-2.5 text-sm ${i === 0 ? "font-semibold text-ink-900" : "text-ink-700"}`}>
+                  <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${i === 0 ? "text-ink-300" : "text-leaf"}`} strokeWidth={3} />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Yearly card */}
+          <div className="card-soft p-7 sm:p-8 flex flex-col">
+            <h3 className="font-display text-2xl text-ink-900">{t.yearly.name}</h3>
+            <div className="mt-3 flex items-baseline gap-1">
+              <span className="font-display text-5xl text-ink-900">{t.yearly.amount}</span>
+              {t.yearly.unit && <span className="text-lg text-ink-500 font-medium">{t.yearly.unit}</span>}
+            </div>
+            <p className="mt-2 text-sm text-ink-500 leading-relaxed min-h-[2.5rem]">{t.yearly.note}</p>
+            <button type="button" disabled={checkoutLoading} onClick={() => handleCheckout(t.yearly.cycle)} className="mt-5 inline-flex items-center justify-center gap-2 px-6 py-3 bg-skype-deep text-white rounded-xl font-semibold text-sm hover:opacity-90 transition shadow-lg shadow-skype-deep/20 disabled:opacity-60">
+              {checkoutLoading ? (lang === "en" ? "Opening checkout..." : "正在打开支付...") : t.yearly.cta} <ArrowRight className="w-4 h-4" />
+            </button>
+            <ul className="mt-6 space-y-3 list-none">
+              {t.yearly.features.map((f, i) => (
+                <li key={f} className={`flex items-start gap-2.5 text-sm ${i === 0 ? "font-semibold text-ink-900" : "text-ink-700"}`}>
+                  <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${i === 0 ? "text-ink-300" : "text-leaf"}`} strokeWidth={3} />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Pro Lifetime card */}
           <div className="card-soft ring-soft p-7 sm:p-8 flex flex-col relative md:scale-[1.02] bg-gradient-to-b from-sky-50/60 to-cloud">
             <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-skype-deep text-white text-xs font-semibold shadow">
               <Sparkles className="w-3.5 h-3.5" /> {t.pro.badge}
@@ -254,7 +380,7 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
               {price.unit && <span className="text-lg text-ink-500 font-medium">{price.unit}</span>}
             </div>
             <p className="mt-2 text-sm text-ink-500 leading-relaxed min-h-[2.5rem]">{price.note}</p>
-            <button type="button" disabled={checkoutLoading} onClick={handleCheckout} className="mt-5 inline-flex items-center justify-center gap-2 px-6 py-3 bg-skype-deep text-white rounded-xl font-semibold text-sm hover:opacity-90 transition shadow-lg shadow-skype-deep/20 disabled:opacity-60">
+            <button type="button" disabled={checkoutLoading} onClick={() => handleCheckout("lifetime")} className="mt-5 inline-flex items-center justify-center gap-2 px-6 py-3 bg-skype-deep text-white rounded-xl font-semibold text-sm hover:opacity-90 transition shadow-lg shadow-skype-deep/20 disabled:opacity-60">
               {checkoutLoading ? (lang === "en" ? "Opening checkout..." : "正在打开支付...") : t.pro.cta} <ArrowRight className="w-4 h-4" />
             </button>
             {checkoutError && <p className="mt-3 text-sm text-red-500 leading-relaxed">{checkoutError}</p>}
@@ -285,7 +411,7 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
         {/* Footer CTA */}
         <div className="text-center mt-16">
           <p className="text-ink-500 text-sm mb-4">{t.ctaFoot}</p>
-          <button type="button" disabled={checkoutLoading} onClick={handleCheckout} className="inline-flex items-center gap-2 px-8 py-3.5 bg-skype-deep text-white rounded-xl font-semibold text-base hover:opacity-90 transition disabled:opacity-60">{t.pro.cta} <ArrowRight className="w-4 h-4" /></button>
+          <button type="button" disabled={checkoutLoading} onClick={() => handleCheckout("lifetime")} className="inline-flex items-center gap-2 px-8 py-3.5 bg-skype-deep text-white rounded-xl font-semibold text-base hover:opacity-90 transition disabled:opacity-60">{t.pro.cta} <ArrowRight className="w-4 h-4" /></button>
         </div>
       </div>
     </div>

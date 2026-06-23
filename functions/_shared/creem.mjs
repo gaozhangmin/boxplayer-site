@@ -21,8 +21,10 @@ export function corsHeaders() {
 }
 
 export function getProductIdForCycle(env, cycle) {
-  if (cycle !== 'lifetime') return ''
-  return env.CREEM_PRODUCT_ID || 'prod_7LMyOwuDPbkgzOhkuHXZEH'
+  if (cycle === 'monthly') return env.CREEM_PRODUCT_ID_MONTHLY || 'prod_monthly_placeholder'
+  if (cycle === 'yearly') return env.CREEM_PRODUCT_ID_YEARLY || 'prod_yearly_placeholder'
+  if (cycle === 'lifetime') return env.CREEM_PRODUCT_ID || 'prod_7LMyOwuDPbkgzOhkuHXZEH'
+  return ''
 }
 
 export function getCreemApiBase(apiKey) {

@@ -10,7 +10,7 @@ export async function onRequestPost(context) {
     if (!env.CREEM_API_KEY) return jsonResponse({ error: 'missing_creem_api_key' }, { status: 500 })
 
     const input = await request.json().catch(() => ({}))
-    const cycle = 'lifetime'
+    const cycle = input.cycle === 'monthly' ? 'monthly' : input.cycle === 'yearly' ? 'yearly' : 'lifetime'
     const source = input.source === 'app' ? 'app' : 'web'
     const productId = getProductIdForCycle(env, cycle)
     if (!productId) return jsonResponse({ error: 'missing_creem_product_id' }, { status: 500 })
