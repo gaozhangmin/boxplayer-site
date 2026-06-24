@@ -1,15 +1,9 @@
 "use client";
 
 import Script from "next/script";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
-
-function generateNonce() {
-  const array = new Uint8Array(32);
-  crypto.getRandomValues(array);
-  return btoa(String.fromCharCode(...array)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-}
 
 declare global {
   interface Window {
@@ -22,7 +16,6 @@ declare global {
             auto_select?: boolean;
             cancel_on_tap_outside?: boolean;
             context?: "signin" | "signup" | "use";
-            nonce?: string;
             prompt_parent_id?: string;
             use_fedcm_for_prompt?: boolean;
           }) => void;
@@ -38,16 +31,15 @@ const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "";
 
 export default function GoogleOneTap({ user }: { user: User | null }) {
   const [scriptReady, setScriptReady] = useState(false);
-  const nonceRef = useRef(generateNonce());
 
   const handleCredential = useCallback(async (credential: string) => {
     try {
       const { error } = await supabase.auth.signInWithIdToken({
         provider: "google",
-        token: credential,
-        nonce: nonceRef.current
+        token: credential
       });
       if (error) console.error("[GoogleOneTap] signInWithIdToken failed:", error.message, error);
+      else console.log("[GoogleOneTap] signInWithIdToken success");
     } catch (err) {
       console.error("[GoogleOneTap] signInWithIdToken error:", err);
     }
@@ -61,7 +53,6 @@ export default function GoogleOneTap({ user }: { user: User | null }) {
       callback: (response) => {
         if (response.credential) void handleCredential(response.credential);
       },
-      nonce: nonceRef.current,
       auto_select: false,
       cancel_on_tap_outside: true,
       context: "signin",
