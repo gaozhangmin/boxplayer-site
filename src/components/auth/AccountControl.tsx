@@ -5,8 +5,8 @@ import { BadgeCheck, ChevronDown, CircleUser, LogOut } from "lucide-react";
 import { useAuth } from "./AuthProvider";
 
 const COPY = {
-  en: { signIn: "Sign in", account: "Account", pro: "Pro", free: "Free", loading: "Loading account", signOut: "Sign out" },
-  zh: { signIn: "登录", account: "账户", pro: "专业版", free: "免费版", loading: "正在加载账户", signOut: "退出登录" }
+  en: { signIn: "Sign in", signInHint: "Sign in with Google or email", account: "Account", pro: "Pro", free: "Free", loading: "Loading account", signOut: "Sign out" },
+  zh: { signIn: "登录", signInHint: "使用 Google 或邮箱登录", account: "账户", pro: "专业版", free: "免费版", loading: "正在加载账户", signOut: "退出登录" }
 } as const;
 
 export default function AccountControl({ lang, fullWidth = false }: { lang: "en" | "zh"; fullWidth?: boolean }) {
@@ -35,7 +35,7 @@ export default function AccountControl({ lang, fullWidth = false }: { lang: "en"
 
   if (!user) {
     return (
-      <button type="button" onClick={() => openLogin(lang)} className={fullWidth ? "flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-left font-medium text-ink-700 transition hover:bg-sky-50 hover:text-skype-deep" : "btn-ghost inline-flex items-center gap-2 px-2.5 text-sm"}>
+      <button type="button" aria-label={t.signInHint} title={t.signInHint} onClick={() => openLogin(lang)} className={fullWidth ? "flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-left font-medium text-ink-700 transition hover:bg-sky-50 hover:text-skype-deep" : "btn-ghost inline-flex items-center gap-2 px-2.5 text-sm"}>
         <CircleUser className="h-4 w-4" /> {t.signIn}
       </button>
     );

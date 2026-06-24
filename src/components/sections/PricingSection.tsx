@@ -30,24 +30,27 @@ const I18N = {
   en: {
     badge: "Pricing",
     title: <>Free forever. <span className="italic text-skype-deep">Pro when you need more.</span></>,
-    desc: "Core file management, video playback, music, and local reading are always free. Upgrade to Pro for unlimited AI search, file organization, AI reading assistant, and more.",
-    proPrice: { amount: "$199", unit: "", note: "One-time · lifetime access" },
+    desc: "Core file management, video playback, music, and local reading are always free. Upgrade to Pro for built-in AI search, AI reading, translation, TTS, semantic indexing, and advanced media workflows.",
+    discount: "30% OFF",
+    discountNote: "Limited launch offer · 70% price",
+    proPrice: { amount: "$139", oldAmount: "$199", unit: "", note: "One-time · lifetime access" },
     monthly: {
       name: "Monthly",
       cycle: "monthly",
-      amount: "$2",
+      amount: "$1.4",
+      oldAmount: "$2",
       unit: "/mo",
       note: "per month · billed monthly",
       tagline: "Full Pro features with monthly flexibility.",
       features: [
         "Everything in Free, plus:",
-        "Unlimited AI Smart Search",
-        "Unlimited global web search",
+        "Built-in BoxPlayer AI models",
+        "AI Smart Search and semantic indexing",
+        "AI Reading Companion for PDF/EPUB",
+        "Instant translation for reading",
+        "Text-to-Speech for reader playback",
+        "AI Agent for cloud-drive search",
         "One-click save share links",
-        "AI File Organizer & dedup",
-        "AI Reading Companion (PDF/EPUB)",
-        "Text-to-Speech (5000 chars/day)",
-        "Instant Translation (5000 chars/day)",
         "TMDB + Douban Movie Discovery",
         "Priority support",
       ],
@@ -56,19 +59,20 @@ const I18N = {
     yearly: {
       name: "Yearly",
       cycle: "yearly",
-      amount: "$19",
+      amount: "$13.3",
+      oldAmount: "$19",
       unit: "/yr",
       note: "per year · billed annually",
       tagline: "Best value for long-term Pro users.",
       features: [
         "Everything in Free, plus:",
-        "Unlimited AI Smart Search",
-        "Unlimited global web search",
+        "Built-in BoxPlayer AI models",
+        "AI Smart Search and semantic indexing",
+        "AI Reading Companion for PDF/EPUB",
+        "Instant translation for reading",
+        "Text-to-Speech for reader playback",
+        "AI Agent for cloud-drive search",
         "One-click save share links",
-        "AI File Organizer & dedup",
-        "AI Reading Companion (PDF/EPUB)",
-        "Text-to-Speech (5000 chars/day)",
-        "Instant Translation (5000 chars/day)",
         "TMDB + Douban Movie Discovery",
         "Priority support",
       ],
@@ -83,8 +87,8 @@ const I18N = {
         "Video & music playback",
         "Local book reading (PDF/EPUB)",
         "Multi-drive connection",
-        "AI Smart Search — 5/day",
-        "Global web search — 5/day",
+        "Local media library",
+        "Open-source CLI and agent tools",
       ],
       cta: "Get Started",
     },
@@ -94,13 +98,13 @@ const I18N = {
       tagline: "Unlimited AI power for search, organization and reading.",
       features: [
         "Everything in Free, plus:",
-        "Unlimited AI Smart Search",
-        "Unlimited global web search",
+        "Built-in BoxPlayer AI models",
+        "AI Smart Search and semantic indexing",
+        "AI Reading Companion for PDF/EPUB",
+        "Instant translation for reading",
+        "Text-to-Speech for reader playback",
+        "AI Agent for cloud-drive search",
         "One-click save share links",
-        "AI File Organizer & dedup",
-        "AI Reading Companion (PDF/EPUB)",
-        "Text-to-Speech (5000 chars/day)",
-        "Instant Translation (5000 chars/day)",
         "TMDB + Douban Movie Discovery",
         "Priority support",
       ],
@@ -115,33 +119,36 @@ const I18N = {
     ctaFoot: "Download the app and login to upgrade to Pro.",
     faqTitle: "Pricing FAQ",
     faqs: [
-      { q: "What is Pro, and what do I get by upgrading?", a: "Pro unlocks the full power of BoxPlayer: unlimited AI Smart Search across all your cloud drives, unlimited global web search, one-click save of share links, AI file organizer & dedup, AI reading companion (PDF/EPUB), text-to-speech, instant translation, and TMDB + Douban movie discovery. The free tier remains free forever — Pro is for when you need unlimited AI and the advanced toolkit." },
+      { q: "What is Pro, and what do I get by upgrading?", a: "Pro unlocks BoxPlayer's AI layer: built-in AI models, AI Smart Search, semantic indexing, AI reading companion for PDF/EPUB, instant translation, text-to-speech, AI cloud-drive search, one-click share-link save, and TMDB + Douban movie discovery. The free tier remains free forever for core file and media workflows." },
       { q: "How do I upgrade to Pro? Which payment methods are supported?", a: "Download BoxPlayer and log in, then upgrade with the one-time lifetime plan. Payment is completed securely through Creem hosted checkout, and Pro activates after checkout." },
       { q: "Does one subscription work on all my devices?", a: "For now, Pro covers Windows, Linux, and macOS devices signed in with the same BoxPlayer account." },
-      { q: "Can I get a refund?", a: "If Lifetime doesn't work out, contact support within 14 days of purchase for a refund." },
+      { q: "Can I get a refund?", a: "All subscriptions include a 7-day free trial, so you can try Pro before you are charged." },
     ] as { q: string; a: string }[],
   },
   zh: {
     badge: "价格",
     title: <>永久免费。 <span className="italic text-skype-deep">专业版解锁更多。</span></>,
-    desc: "基础文件管理、视频播放、音乐、本地阅读始终免费。升级 Pro 解锁无限 AI 搜索、文件整理、AI 阅读助手等高级功能。",
-    proPrice: { amount: "$199", unit: "", note: "一次买断 · 终身使用" },
+    desc: "基础文件管理、视频播放、音乐、本地阅读始终免费。升级 Pro 解锁内置 AI 搜索、AI 阅读、翻译、朗读、语义索引和高级媒体工作流。",
+    discount: "30% OFF",
+    discountNote: "限时首发优惠 · 7 折",
+    proPrice: { amount: "$139", oldAmount: "$199", unit: "", note: "一次买断 · 终身使用" },
     monthly: {
       name: "包月",
       cycle: "monthly",
-      amount: "$2",
+      amount: "$1.4",
+      oldAmount: "$2",
       unit: "/月",
       note: "每月 · 按月订阅",
       tagline: "灵活的按月订阅，随时可取消。",
       features: [
         "包含免费版全部功能，以及：",
-        "无限 AI 智能搜索",
-        "无限全网资源搜索",
+        "内置 BoxPlayer AI 模型",
+        "AI 智能搜索与语义索引",
+        "PDF/EPUB AI 阅读助手",
+        "阅读器即时翻译",
+        "阅读器语音朗读",
+        "AI Agent 网盘搜索",
         "全网资源一键保存",
-        "AI 文件整理 & 查重",
-        "AI 阅读助手 (PDF/EPUB)",
-        "语音朗读 (5000字/天)",
-        "即时翻译 (5000字/天)",
         "TMDB + 豆瓣电影发现",
         "优先技术支持",
       ],
@@ -150,19 +157,20 @@ const I18N = {
     yearly: {
       name: "包年",
       cycle: "yearly",
-      amount: "$19",
+      amount: "$13.3",
+      oldAmount: "$19",
       unit: "/年",
       note: "每年 · 按年订阅",
       tagline: "长期使用的最佳选择。",
       features: [
         "包含免费版全部功能，以及：",
-        "无限 AI 智能搜索",
-        "无限全网资源搜索",
+        "内置 BoxPlayer AI 模型",
+        "AI 智能搜索与语义索引",
+        "PDF/EPUB AI 阅读助手",
+        "阅读器即时翻译",
+        "阅读器语音朗读",
+        "AI Agent 网盘搜索",
         "全网资源一键保存",
-        "AI 文件整理 & 查重",
-        "AI 阅读助手 (PDF/EPUB)",
-        "语音朗读 (5000字/天)",
-        "即时翻译 (5000字/天)",
         "TMDB + 豆瓣电影发现",
         "优先技术支持",
       ],
@@ -177,8 +185,8 @@ const I18N = {
         "视频播放 & 音乐播放",
         "本地书籍阅读 (PDF/EPUB)",
         "多网盘同时连接",
-        "AI 智能搜索 — 5次/天",
-        "全网资源搜索 — 5次/天",
+        "本地媒体库",
+        "开源 CLI 和 Agent 工具",
       ],
       cta: "免费开始",
     },
@@ -188,13 +196,13 @@ const I18N = {
       tagline: "无限的 AI 搜索、整理与阅读能力。",
       features: [
         "包含免费版全部功能，以及：",
-        "无限 AI 智能搜索",
-        "无限全网资源搜索",
+        "内置 BoxPlayer AI 模型",
+        "AI 智能搜索与语义索引",
+        "PDF/EPUB AI 阅读助手",
+        "阅读器即时翻译",
+        "阅读器语音朗读",
+        "AI Agent 网盘搜索",
         "全网资源一键保存",
-        "AI 文件整理 & 查重",
-        "AI 阅读助手 (PDF/EPUB)",
-        "语音朗读 (5000字/天)",
-        "即时翻译 (5000字/天)",
         "TMDB + 豆瓣电影发现",
         "优先技术支持",
       ],
@@ -209,10 +217,10 @@ const I18N = {
     ctaFoot: "下载 App 并登录后升级到专业版。",
     faqTitle: "价格常见问题",
     faqs: [
-      { q: "什么是专业版？升级后能解锁哪些功能？", a: "专业版解锁 BoxPlayer 的全部能力：跨所有网盘的无限 AI 智能搜索、无限全网资源搜索、分享链接一键保存、AI 文件整理与查重、AI 阅读助手（PDF/EPUB）、语音朗读、即时翻译，以及 TMDB + 豆瓣电影发现。免费版永久免费 —— Pro 适合需要无限 AI 和高级工具链的用户。" },
+      { q: "什么是专业版？升级后能解锁哪些功能？", a: "专业版解锁 BoxPlayer 的 AI 层：内置 AI 模型、AI 智能搜索、语义索引、PDF/EPUB AI 阅读助手、即时翻译、语音朗读、AI 网盘搜索、分享链接一键保存，以及 TMDB + 豆瓣电影发现。免费版继续永久免费，保留核心文件和媒体功能。" },
       { q: "怎么升级到专业版？支持哪些支付方式？", a: "下载 BoxPlayer 并登录后购买终身版。支付通过 Creem 托管结账页安全完成，支付后自动激活 Pro。" },
       { q: "一次订阅能在所有设备上使用吗？", a: "暂时仅覆盖 Windows、Linux 和 macOS，使用同一 BoxPlayer 账号登录即可。" },
-      { q: "可以退款吗？", a: "终身版如不满意，购买后 14 天内可联系客服申请退款。" },
+      { q: "可以退款吗？", a: "现在所有订阅都提供 7 天免费试用，你可以先体验 Pro，再决定是否继续付费。" },
     ] as { q: string; a: string }[],
   },
 };
@@ -303,6 +311,12 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
           <span className="text-skype-deep font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase">{t.badge}</span>
           <h2 id="pricing-heading" className="font-display mt-3 text-[clamp(1.75rem,5vw,3rem)] leading-[1.1] tracking-[-0.02em] text-ink-900">{t.title}</h2>
           <p className="mt-4 text-ink-500 text-base sm:text-lg leading-relaxed">{t.desc}</p>
+          <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-coral/30 bg-coral/10 px-4 py-2 text-sm font-semibold text-coral">
+            <Sparkles className="h-4 w-4" />
+            <span>{t.discount}</span>
+            <span className="h-4 w-px bg-coral/30" />
+            <span>{t.discountNote}</span>
+          </div>
         </div>
 
         {/* Plan cards */}
@@ -330,7 +344,9 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
           {/* Monthly card */}
           <div className="card-soft p-7 sm:p-8 flex flex-col">
             <h3 className="font-display text-2xl text-ink-900">{t.monthly.name}</h3>
+            <div className="mt-3 inline-flex w-fit rounded-full bg-coral/10 px-2.5 py-1 text-xs font-semibold text-coral">{t.discount}</div>
             <div className="mt-3 flex items-baseline gap-1">
+              <span className="text-base font-semibold text-ink-300 line-through">{t.monthly.oldAmount}</span>
               <span className="font-display text-5xl text-ink-900">{t.monthly.amount}</span>
               {t.monthly.unit && <span className="text-lg text-ink-500 font-medium">{t.monthly.unit}</span>}
             </div>
@@ -351,7 +367,9 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
           {/* Yearly card */}
           <div className="card-soft p-7 sm:p-8 flex flex-col">
             <h3 className="font-display text-2xl text-ink-900">{t.yearly.name}</h3>
+            <div className="mt-3 inline-flex w-fit rounded-full bg-coral/10 px-2.5 py-1 text-xs font-semibold text-coral">{t.discount}</div>
             <div className="mt-3 flex items-baseline gap-1">
+              <span className="text-base font-semibold text-ink-300 line-through">{t.yearly.oldAmount}</span>
               <span className="font-display text-5xl text-ink-900">{t.yearly.amount}</span>
               {t.yearly.unit && <span className="text-lg text-ink-500 font-medium">{t.yearly.unit}</span>}
             </div>
@@ -375,7 +393,9 @@ export default function PricingSection({ lang = "zh" }: { lang?: "en" | "zh" }) 
               <Sparkles className="w-3.5 h-3.5" /> {t.pro.badge}
             </span>
             <h3 className="font-display text-2xl text-skype-deep">{t.pro.name}</h3>
+            <div className="mt-3 inline-flex w-fit rounded-full bg-coral/10 px-2.5 py-1 text-xs font-semibold text-coral">{t.discount}</div>
             <div className="mt-3 flex items-baseline gap-1">
+              <span className="text-base font-semibold text-ink-300 line-through">{price.oldAmount}</span>
               <span className="font-display text-5xl text-ink-900">{price.amount}</span>
               {price.unit && <span className="text-lg text-ink-500 font-medium">{price.unit}</span>}
             </div>

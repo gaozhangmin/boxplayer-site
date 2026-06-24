@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
 import AuthModal from "./AuthModal";
+import GoogleOneTap from "./GoogleOneTap";
 
 type Language = "en" | "zh";
 type SubscriptionState = "loading" | "free" | "pro" | "unknown";
@@ -86,6 +87,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   return (
     <AuthContext.Provider value={value}>
       {children}
+      {!loading && <GoogleOneTap user={session?.user || null} />}
       <AuthModal open={loginOpen} lang={loginLang} onClose={() => setLoginOpen(false)} />
     </AuthContext.Provider>
   );
