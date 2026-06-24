@@ -16,6 +16,7 @@ declare global {
             auto_select?: boolean;
             cancel_on_tap_outside?: boolean;
             context?: "signin" | "signup" | "use";
+            nonce?: string;
             prompt_parent_id?: string;
             use_fedcm_for_prompt?: boolean;
           }) => void;
@@ -29,14 +30,24 @@ declare global {
 
 const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "";
 
+async function generateNonce() {
+  const nonce = btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(32))));
+  const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(nonce));
+  const hashedNonce = Array.from(new Uint8Array(hashBuffer))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+  return { nonce, hashedNonce };
+}
+
 export default function GoogleOneTap({ user }: { user: User | null }) {
   const [scriptReady, setScriptReady] = useState(false);
 
-  const handleCredential = useCallback(async (credential: string) => {
+  const handleCredential = useCallback(async (credential: string, nonce: string) => {
     try {
       const { error } = await supabase.auth.signInWithIdToken({
         provider: "google",
-        token: credential
+        token: credential,
+        nonce
       });
       if (error) console.error("[GoogleOneTap] signInWithIdToken failed:", error.message, error);
       else console.log("[GoogleOneTap] signInWithIdToken success");
@@ -48,20 +59,37 @@ export default function GoogleOneTap({ user }: { user: User | null }) {
   useEffect(() => {
     if (!GOOGLE_CLIENT_ID || user || !scriptReady || !window.google?.accounts?.id) return;
 
-    window.google.accounts.id.initialize({
-      client_id: GOOGLE_CLIENT_ID,
-      callback: (response) => {
-        if (response.credential) void handleCredential(response.credential);
-      },
-      auto_select: false,
-      cancel_on_tap_outside: true,
-      context: "signin",
-      prompt_parent_id: "google-one-tap",
-      use_fedcm_for_prompt: true
-    });
-    window.google.accounts.id.prompt();
+    let cancelled = false;
 
-    return () => window.google?.accounts?.id?.cancel();
+    const initialize = async () => {
+      try {
+        const { nonce, hashedNonce } = await generateNonce();
+        if (cancelled || user || !window.google?.accounts?.id) return;
+
+        window.google.accounts.id.initialize({
+          client_id: GOOGLE_CLIENT_ID,
+          callback: (response) => {
+            if (response.credential) void handleCredential(response.credential, nonce);
+          },
+          auto_select: false,
+          cancel_on_tap_outside: true,
+          context: "signin",
+          nonce: hashedNonce,
+          prompt_parent_id: "google-one-tap",
+          use_fedcm_for_prompt: true
+        });
+        window.google.accounts.id.prompt();
+      } catch (err) {
+        console.error("[GoogleOneTap] initialize failed:", err);
+      }
+    };
+
+    void initialize();
+
+    return () => {
+      cancelled = true;
+      window.google?.accounts?.id?.cancel();
+    };
   }, [scriptReady, user, handleCredential]);
 
   if (!GOOGLE_CLIENT_ID || user) return null;
