@@ -172,10 +172,10 @@ export default function PrivacyEn() {
               account. You can manage your data preferences in the app
               Settings at any time, or contact us at{" "}
               <a
-                href="mailto:support@boxplayer.cc"
+                href="mailto:boxplayer-support@proton.me"
                 className="text-skype-deep hover:underline"
               >
-                support@boxplayer.cc
+                boxplayer-support@proton.me
               </a>
               .
             </p>
@@ -211,10 +211,10 @@ export default function PrivacyEn() {
               If you have any questions about this Privacy Policy, please
               contact us at{" "}
               <a
-                href="mailto:support@boxplayer.cc"
+                href="mailto:boxplayer-support@proton.me"
                 className="text-skype-deep hover:underline"
               >
-                support@boxplayer.cc
+                boxplayer-support@proton.me
               </a>
               .
             </p>

@@ -25,7 +25,7 @@ export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
         download: "下载",
         privacy: "隐私政策",
         terms: "使用条款",
-        support: "客服邮箱",
+        support: "客服邮箱: boxplayer-support@proton.me",
       };
   const homePrefix = isEn ? "/en/" : "/";
   const pricingHref = isEn ? "/en/pricing" : "/pricing";
@@ -98,7 +98,7 @@ export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
             {t.terms}
           </Link>
           <a
-            href="mailto:gaozhangmin@gmail.com"
+            href="mailto:boxplayer-support@proton.me"
             className="hover:text-skype-deep transition"
           >
             {t.support}

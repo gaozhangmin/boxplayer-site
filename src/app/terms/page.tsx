@@ -175,10 +175,10 @@ export default function TermsZh() {
             <p className="text-ink-700 leading-relaxed">
               如对本使用条款有任何疑问，请通过{" "}
               <a
-                href="mailto:support@boxplayer.cc"
+                href="mailto:boxplayer-support@proton.me"
                 className="text-skype-deep hover:underline"
               >
-                support@boxplayer.cc
+                boxplayer-support@proton.me
               </a>{" "}
               与我们联系。
             </p>

@@ -208,10 +208,10 @@ export default function TermsEn() {
               If you have any questions about these Terms of Use, please
               contact us at{" "}
               <a
-                href="mailto:support@boxplayer.cc"
+                href="mailto:boxplayer-support@proton.me"
                 className="text-skype-deep hover:underline"
               >
-                support@boxplayer.cc
+                boxplayer-support@proton.me
               </a>
               .
             </p>

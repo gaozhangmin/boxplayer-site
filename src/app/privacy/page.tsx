@@ -150,10 +150,10 @@ export default function PrivacyZh() {
             <p className="text-ink-700 leading-relaxed mb-3">
               你有权访问、更正、删除你的个人信息，以及撤销同意和注销账号。你可以随时在应用设置中管理你的数据偏好，或通过
               <a
-                href="mailto:support@boxplayer.cc"
+                href="mailto:boxplayer-support@proton.me"
                 className="text-skype-deep hover:underline"
               >
-                support@boxplayer.cc
+                boxplayer-support@proton.me
               </a>{" "}
               联系我们。
             </p>
@@ -184,10 +184,10 @@ export default function PrivacyZh() {
             <p className="text-ink-700 leading-relaxed">
               如对本隐私政策有任何疑问，请通过{" "}
               <a
-                href="mailto:support@boxplayer.cc"
+                href="mailto:boxplayer-support@proton.me"
                 className="text-skype-deep hover:underline"
               >
-                support@boxplayer.cc
+                boxplayer-support@proton.me
               </a>{" "}
               与我们联系。
             </p>

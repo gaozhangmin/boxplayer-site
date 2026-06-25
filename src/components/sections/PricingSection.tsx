@@ -95,7 +95,7 @@ const I18N = {
     pro: {
       badge: "Most popular",
       name: "Pro",
-      tagline: "Unlimited AI power for search, organization and reading.",
+      tagline: "Monthly hosted AI credits for search, organization and reading.",
       features: [
         "Everything in Free, plus:",
         "Built-in BoxPlayer AI models",
@@ -119,7 +119,7 @@ const I18N = {
     ctaFoot: "Download the app and login to upgrade to Pro.",
     faqTitle: "Pricing FAQ",
     faqs: [
-      { q: "What is Pro, and what do I get by upgrading?", a: "Pro unlocks BoxPlayer's AI layer: built-in AI models, AI Smart Search, semantic indexing, AI reading companion for PDF/EPUB, instant translation, text-to-speech, AI cloud-drive search, one-click share-link save, and TMDB + Douban movie discovery. The free tier remains free forever for core file and media workflows." },
+      { q: "What is Pro, and what do I get by upgrading?", a: "Pro unlocks BoxPlayer's AI layer: built-in AI models with a monthly hosted AI credit allowance, AI Smart Search, semantic indexing, AI reading companion for PDF/EPUB, instant translation, text-to-speech, AI cloud-drive search, one-click share-link save, and TMDB + Douban movie discovery. BYOK usage can continue with your own provider quota, and the free tier remains free forever for core file and media workflows." },
       { q: "How do I upgrade to Pro? Which payment methods are supported?", a: "Download BoxPlayer and log in, then upgrade with the one-time lifetime plan. Payment is completed securely through Creem hosted checkout, and Pro activates after checkout." },
       { q: "Does one subscription work on all my devices?", a: "For now, Pro covers Windows, Linux, and macOS devices signed in with the same BoxPlayer account." },
       { q: "Can I get a refund?", a: "All subscriptions include a 7-day free trial, so you can try Pro before you are charged." },
@@ -193,7 +193,7 @@ const I18N = {
     pro: {
       badge: "最受欢迎",
       name: "专业版",
-      tagline: "无限的 AI 搜索、整理与阅读能力。",
+      tagline: "每月托管 AI 用量，覆盖搜索、整理与阅读。",
       features: [
         "包含免费版全部功能，以及：",
         "内置 BoxPlayer AI 模型",
@@ -217,7 +217,7 @@ const I18N = {
     ctaFoot: "下载 App 并登录后升级到专业版。",
     faqTitle: "价格常见问题",
     faqs: [
-      { q: "什么是专业版？升级后能解锁哪些功能？", a: "专业版解锁 BoxPlayer 的 AI 层：内置 AI 模型、AI 智能搜索、语义索引、PDF/EPUB AI 阅读助手、即时翻译、语音朗读、AI 网盘搜索、分享链接一键保存，以及 TMDB + 豆瓣电影发现。免费版继续永久免费，保留核心文件和媒体功能。" },
+      { q: "什么是专业版？升级后能解锁哪些功能？", a: "专业版解锁 BoxPlayer 的 AI 层：内置 AI 模型与每月托管 AI 用量、AI 智能搜索、语义索引、PDF/EPUB AI 阅读助手、即时翻译、语音朗读、AI 网盘搜索、分享链接一键保存，以及 TMDB + 豆瓣电影发现。BYOK 可继续使用你自己的模型额度，免费版继续永久免费，保留核心文件和媒体功能。" },
       { q: "怎么升级到专业版？支持哪些支付方式？", a: "下载 BoxPlayer 并登录后购买终身版。支付通过 Creem 托管结账页安全完成，支付后自动激活 Pro。" },
       { q: "一次订阅能在所有设备上使用吗？", a: "暂时仅覆盖 Windows、Linux 和 macOS，使用同一 BoxPlayer 账号登录即可。" },
       { q: "可以退款吗？", a: "现在所有订阅都提供 7 天免费试用，你可以先体验 Pro，再决定是否继续付费。" },
