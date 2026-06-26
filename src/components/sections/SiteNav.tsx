@@ -11,11 +11,13 @@ import AccountControl from "@/components/auth/AccountControl";
 
 const NAV_ZH = [
   { href: "#features", label: "功能" }, { href: "/pricing/", label: "价格", absolute: true },
+  { href: "/support/", label: "工单", absolute: true },
   { href: "#opensource", label: "开源" }, { href: "#cli", label: "CLI · Agent" },
   { href: "#faq", label: "FAQ" }, { href: "#download", label: "下载" },
 ];
 const NAV_EN = [
   { href: "#features", label: "Features" }, { href: "/en/pricing/", label: "Pricing", absolute: true },
+  { href: "/en/support/", label: "Support", absolute: true },
   { href: "#opensource", label: "Open Source" }, { href: "#cli", label: "CLI · Agent" },
   { href: "#faq", label: "FAQ" }, { href: "#download", label: "Download" },
 ];

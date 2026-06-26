@@ -528,6 +528,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
         />
+        {/* 115 OAuth callback: detect ?code= in URL and redirect to app's URL scheme */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var q=new URLSearchParams(window.location.search);var c=q.get("code");if(c){var u="boxplayer-115oauth://callback?code="+encodeURIComponent(c);var s=q.get("state");if(s)u+="&state="+encodeURIComponent(s);window.location.replace(u)}})();`,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col"><AuthProvider>{children}</AuthProvider></body>
     </html>

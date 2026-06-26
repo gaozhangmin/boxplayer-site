@@ -13,6 +13,7 @@ export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
         pricing: "Pricing",
         openSource: "Open source",
         download: "Download",
+        tickets: "Support",
         privacy: "Privacy Policy",
         terms: "Terms of Service",
         support: "Customer support",
@@ -23,12 +24,14 @@ export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
         pricing: "价格",
         openSource: "开源",
         download: "下载",
+        tickets: "工单",
         privacy: "隐私政策",
         terms: "使用条款",
         support: "客服邮箱: boxplayer-support@proton.me",
       };
   const homePrefix = isEn ? "/en/" : "/";
   const pricingHref = isEn ? "/en/pricing" : "/pricing";
+  const supportHref = isEn ? "/en/support" : "/support";
   const privacyHref = isEn ? "/en/privacy" : "/privacy";
   const termsHref = isEn ? "/en/terms" : "/terms";
   return (
@@ -74,6 +77,9 @@ export default function SiteFooter({ lang = "zh" }: { lang?: "en" | "zh" }) {
           <a href={`${homePrefix}#download`} className="hover:text-skype-deep transition">
             {t.download}
           </a>
+          <Link href={supportHref} className="hover:text-skype-deep transition">
+            {t.tickets}
+          </Link>
           <a
             href={GITHUB_REPO}
             target="_blank"

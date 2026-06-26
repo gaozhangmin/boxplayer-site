@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:creem": "node --test functions/_shared/creem.test.mjs",
+    "test:support": "node --test functions/_shared/support.test.mjs",
     "test:auth": "node --test src/lib/authRedirect.test.mjs"
   },
   "dependencies": {
